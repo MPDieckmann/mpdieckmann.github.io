@@ -2,4 +2,4 @@
 layout: null
 ---
 
-{{ site.repositories | jsonify }}
+{{ site.repositories | inspect }}
