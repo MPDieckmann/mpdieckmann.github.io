@@ -6,6 +6,7 @@
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% if item.url contains currentMenu %}
+    {% assign arr = arr | remove {{currentMenu}} %}
     {% decrement depth %}
     {% assign currentMenu = arr[depth] %}
     </ul></li>
@@ -21,9 +22,8 @@
     <li>ERROR DETECTED</li>
   {% endif %}
 {% endfor %}
-{% for depth > 0 %}
+{% for depth in arr %}
   </ul></li>
-  {% decrement depth %}
 {% endfor %}
   </ul>
 </div>
