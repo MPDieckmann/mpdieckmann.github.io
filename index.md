@@ -2,8 +2,6 @@
 title: "Home"
 hidetitle: "true"
 ---
-# mpdieckmann.github.io
-
 Hi, I'm MPDieckmann!
 
 I am a hobby web developer with basic knowledge in following (coding) languages:
