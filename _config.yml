@@ -7,8 +7,7 @@ collections:
   - repositories
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "pages"
     values:
@@ -18,8 +17,7 @@ defaults:
       themedforecolor: "#fff"
       layout: "default"
       author: "<a href=\"https://github.com/MPDieckmann\">MPDieckmann</a>"
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
@@ -30,8 +28,7 @@ defaults:
       themedforecolor: "#fff"
       layout: "default"
       author: "<a href=\"https://github.com/MPDieckmann\">MPDieckmann</a>"
-  -
-    scope:
+  - scope:
       path: ""
       type: "repositories"
     values:
