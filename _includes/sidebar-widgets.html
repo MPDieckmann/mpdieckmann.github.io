@@ -13,7 +13,7 @@
   {% if item.next and item.next.url contains item.url %}
     {% increment depth %}
 	  {% assign arr[depth] = item.url %}
-    {% currentMenu = item.url %}
+    {% assign currentMenu = item.url %}
     <li>{{ item.url }}<ul>
   {% elsif item.url contains currentMenu %}
     <li>{{ item.url }}</li>
