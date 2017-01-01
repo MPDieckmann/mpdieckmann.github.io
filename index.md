@@ -25,5 +25,7 @@ Each repository (if no other license is provided) is licensed under the [GPLv3](
 * [WordPress Themes](/wp-themes/)
 * [WordPress Plugins](/wp-plugins/)
 
+{{ site.repositories | jsonify }}
+
 ## Other Repositories
 * [JavaScript functions and classes](/Snippets/)
