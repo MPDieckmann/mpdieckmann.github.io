@@ -6,7 +6,7 @@ footer: "footer-widgets.html"
 collections:
   repositories:
     output: true
-    permalink: /repositories/:path/
+    permalink: /:path/
 
 defaults:
   - scope:
