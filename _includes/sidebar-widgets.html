@@ -1,12 +1,33 @@
 <div class="widget">
   <h2>Repositories</h2>
   <ul class="menu">
+{% assign depth = 0 %}
+{% assign arr = [ "/" ] %}
+{% assign currentMenu = "/" %}
 {% for item in site.repositories %}
-    <li class="menu-item{% if item.url == page.url%} current-menu-item{% endif %}"><a href="{{ item.url | absolute_url }}">{% if item.title %}{{ item.title }}{% else %}{{ item.url }}{% endif %}</a></li>
+  {% if item.url contains currentMenu) %}
+    {% decrement depth %}
+    {% assign currentMenu = arr[depth] %}
+    </ul></li>
+  {% endif %}
+  {% if item.next and item.next.url contains item.url) %}
+    {% increment depth %}
+	  {% assign arr[depth] = item.url %}
+    {% currentMenu = item.url %}
+    <li>{{ item.url }}<ul>
+  {% elsif item.url contains currentMenu %}
+    <li>{{ item.url }}</li>
+  {% else %}
+    <li>ERROR DETECTED</li>
+  {% endif %}
+{% endfor %}
+{% for depth > 0 %}
+  </ul></li>
+  {% decrement depth %}
 {% endfor %}
   </ul>
 </div>
-<div class="widget">
+<!--<div class="widget">
   <h2>Pages</h2>
   <ul class="menu">
 {% for post in site.html_pages %}
@@ -31,4 +52,4 @@
     <li class="menu-item"><a href="{{ "/feed.atom" | absolute_url }}">Atom-Feed</a></li>
   </ul>
   <p>&copy; 2017 <a href="https://github.com/MPDieckmann">MPDieckmann</a></p>
-</div>
+</div>-->
