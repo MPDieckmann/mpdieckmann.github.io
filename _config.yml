@@ -2,12 +2,10 @@ logo: "/images/logo.png"
 title: "MPDieckmann"
 sidebar: "sidebar-widgets.html"
 footer: "footer-widgets.html"
-headermenu: [
-  { url: "/", title: "Home" },
-  { url: "/Snippets/", title: "Snippets" },
-  { url: "/wp-plugins/", title: "WP-Plugins" },
-  { url: "/wp-themes/", title: "WP-Themes" }
-]
+
+collections:
+  - repositories
+
 defaults:
   -
     scope:
@@ -24,6 +22,18 @@ defaults:
     scope:
       path: ""
       type: "posts"
+    values:
+      showmeta: "true"
+      appbackground: "#eee"
+      cardbackground: "#fff"
+      themecolor: "#080"
+      themedforecolor: "#fff"
+      layout: "default"
+      author: "<a href=\"https://github.com/MPDieckmann\">MPDieckmann</a>"
+  -
+    scope:
+      path: ""
+      type: "repositories"
     values:
       showmeta: "true"
       appbackground: "#eee"
