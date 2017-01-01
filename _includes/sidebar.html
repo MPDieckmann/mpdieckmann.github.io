@@ -1,0 +1,11 @@
+      <aside id="sidebar">
+        <div id="sidebar-container">
+          <sidebar-header>
+            <button id="sidebar-close"><span class="icon icon-close"></span></button>
+            <div>{{ site.title }}</div>
+          </sidebar-header>
+          <sidebar-content>
+{% include {{site.sidebar}} %}
+          </sidebar-content>
+        </div>
+      </aside>

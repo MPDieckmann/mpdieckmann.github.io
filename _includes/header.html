@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}{{ site.lang }}{% endif %}">
+  <head>
+    <meta charset="UTF-8">
+    <base href="{{ "/" | absolute_url }}" />
+    <title>{% if page.title %}{{ page.title }} &ndash; {% endif %}{{ site.title }}</title>
+    <link href="{{ "/css/theme.css" | absolute_url }}" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+h1,h2,h3,h4,h5,h6,.headline,a{color:{{page.themecolor}};}
+a:focus,body::before,input[type="button"],input[type="submit"],input[type="reset"],button,body.scrolling header,.menu .current-menu-item>a{background-color:{{page.themecolor}};}
+hr,input,textarea,button,article-meta,.comment,.comment-form .logged-in-as,sidebar-header,.menu>.current-menu-item{border-color:{{page.themecolor}};}
+a:focus,input[type="button"],input[type="submit"],input[type="reset"],button,header,header a,.menu .current-menu-item>a,.menu a:focus{color:{{page.themedforecolor}};}
+html{background:{{page.appbackground}};}
+input,textarea,button,article,.menu>.current-menu-item{background-color:{{page.cardbackground}};}
+@media(max-width:800px){aside #sidebar-container{background-color:{{page.cardbackground}};}}
+    </style>
+    <meta id="mytheme-color" name="theme-color" content="{% if page.themecolor %}{{ page.themecolor }}{% else %}{{ site.themecolor }}{% endif %}" />
+    <script src="{{ "/js/theme.js" | absolute_url }}" async></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <link rel="alternate" type="application/rss+xml" href="{{ "/feed.xml" | absolute_url }}" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+{% if site.logo %}
+    <link rel="icon" href="{{ site.logo | absolute_url }}" sizes="32x32" />
+    <meta name="msapplication-TileImage" content="{{ site.logo | absolute_url }}" />
+    <link rel="apple-touch-startup-image" href="{{ site.logo | absolute_url }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ site.logo | absolute_url }}" />
+{% endif %}
+{% if site.header %}{% include {{site.header}} %}{% endif %}
+  </head>
+  <body class="{% if site.bodyclasses %}{{ site.bodyclasses }}{% endif %}{% if site.logo %} has-logo{% endif %}{% if site.headermenu %} has-header-menu{% endif %}{% if page.headerimage %} has-header-image{% endif %}{% if site.sidebar %} has-sidebar{% endif %}">
+{% if page.headerimage %}
+    <header-image class="bg-img" style="background-image: url('{{ page.headerimage | absolute_url }}')"><img src="{{ page.headerimage | absolute_url }}" /></header-image>
+{% endif %}
+    <header>
+      <div class="container">
+        <header-group id="header-top-bar">
+{% if site.sidebar %}
+          <button id="sidebar-toggle"><span class="icon icon-menu"></span></button>
+{% endif %}
+        </header-group>
+{% if site.logo %}
+        <header-logo>
+          <a href="{{ "/" | absolute_url }}" class="bg-img" style="background-image: url('{{ site.logo | absolute_url }}')"><img src="{{ site.logo | absolute_url }}" /></a>
+        </header-logo>
+{% endif %}
+        <header-group id="header-titles">
+{% if page.hidetitle %}
+          <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+{% if site.subtitle %}
+          <div>{{ site.subtitle }}</div>
+{% endif %}{% else %}
+          <div class="headline"><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></div>
+{% if page.title %}
+          <h1><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></h1>
+{% if page.subtitle %}
+          <div>{{ page.subtitle }}</div>
+{% endif %}{% endif %}{% endif %}
+        </header-group>
+      </div>
+    </header>
+{% if site.headermenu %}
+    <header-menu>
+      <nav class="menu">
+{% for item in site.headermenu %}
+        <li class="menu-item{% if item.url == page.url %} current-menu-item{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title }}</a></li>
+{% endfor %}
+      </nav>
+    </header-menu>
+{% endif %}

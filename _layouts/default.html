@@ -1,0 +1,21 @@
+{% include header.html %}
+    <main>
+      <div class="container">
+        <article>
+{% if page.showmeta == "true" %}
+          <article-meta>
+{% if page.author %}
+            <span class="author">{{ page.author }}</span>
+{% endif %}{% if page.author && page.date %} - {% endif %}{% if page.date %}
+            <span class="date">{{ page.date | date: "%d.%m.%Y" }}</span>
+{% endif %}
+          </article-meta>
+{% endif %}
+          <article-content>{{ content }}</article-content>
+        </article>
+      </div>
+{% if site.sidebar %}
+{% include sidebar.html %}
+{% endif %}
+    </main>
+{% include footer.html %}

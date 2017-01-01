@@ -1,0 +1,12 @@
+---
+layout: null
+---
+
+$app-background: {{ page.appbackground }};
+$card-background: {{ page.cardbackground }};
+$theme-color: {{ page.themecolor }};
+$themed-fore-color: {{ page.themedforecolor }};
+
+@import "normalize";
+@import "layout";
+@import "custom";
