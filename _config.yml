@@ -28,14 +28,3 @@ defaults:
       themedforecolor: "#fff"
       layout: "default"
       author: "<a href=\"https://github.com/MPDieckmann\">MPDieckmann</a>"
-  - scope:
-      path: ""
-      type: "repositories"
-    values:
-      showmeta: "true"
-      appbackground: "#eee"
-      cardbackground: "#fff"
-      themecolor: "#080"
-      themedforecolor: "#fff"
-      layout: "default"
-      author: "<a href=\"https://github.com/MPDieckmann\">MPDieckmann</a>"
