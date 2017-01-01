@@ -1,4 +1,12 @@
 <div class="widget">
+  <h2>Repositories</h2>
+  <ul class="menu">
+{% for item in site.repositories %}
+    <li class="menu-item{% if item.url == page.url%} current-menu-item{% endif %}"><a href="{{ item.url | absolute_url }}">{% if item.title %}{{ item.title }}{% else %}{{ item.url }}{% endif %}</a></li>
+{% endfor %}
+  </ul>
+</div>
+<div class="widget">
   <h2>Pages</h2>
   <ul class="menu">
 {% for post in site.html_pages %}
