@@ -16,4 +16,5 @@ Here is a list to some plugins
 {% for item in site.repositories %}
 {% if item.url contains page.url && item.url != page.url %}
 * [{{ item.title }}]({{ item.url | absolute_url }}) *([Branch]({{ item.branch }}))*
+{% endif %}
 {% endfor %}
