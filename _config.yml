@@ -4,7 +4,9 @@ sidebar: "sidebar-widgets.html"
 footer: "footer-widgets.html"
 
 collections:
-  - repositories
+  repositories:
+    output: true
+    permalink: /repositories/:path/
 
 defaults:
   - scope:
