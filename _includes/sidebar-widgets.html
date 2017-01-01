@@ -6,7 +6,7 @@
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% if item.url contains currentMenu %}
-    {% assign arr = arr | remove {{currentMenu}} %}
+    {% remove arr[depth] %}
     {% decrement depth %}
     {% assign currentMenu = arr[depth] %}
     </ul></li>
