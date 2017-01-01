@@ -12,5 +12,6 @@ Have fun with my WordPress-Plugins!
 Each WordPress-Plugin has its own branch in this repository except this "[master](https://github.com/MPDieckmann/wp-plugins/tree/master)" branch which is used to display and manage [https://mpdieckmann.github.io/wp-plugins](https://mpdieckmann.github.io/wp-plugins).
 
 Here is a list to some plugins
-
-* [Crossword Puzzle Plugin](/wp-plugins/crossword-puzzle) *([Branch](https://github.com/MPDieckmann/wp-plugins/tree/crossword-puzzle))*
+{% for item in site.repositories %}
+* [{{ item.title }}]({{ item.url | absolute_url }}) *([Branch]({{ item.branch }}))*
+{% endfor %}
