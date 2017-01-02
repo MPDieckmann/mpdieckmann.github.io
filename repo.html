@@ -8,8 +8,9 @@ layout: null
 {% assign currentMenu = "/" %}
 {% capture output %}[{% endcapture %}
 {% for item in site.repositories %}
+console.group("{{ item.url }}");
   {% for i in arr %}
-    console.log({"item.url": "{{ item.url }}", depth: "{{ depth }}", currentMenu: "{{ currentMenu }}"});
+    console.log({ depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
     {% if item.url contains currentMenu or depth == 0 %}
       {% break %}
     {% else %}
@@ -51,6 +52,7 @@ null
 ]
 },{% endcapture %}
   {% endunless %}
+console.groupEnd();
 {% endfor %}
 {% capture output %}{{ output }}
 null
