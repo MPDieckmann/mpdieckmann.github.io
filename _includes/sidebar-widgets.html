@@ -2,7 +2,7 @@
   <h2>Repositories</h2>
   <ul class="menu">
 {% assign depth = 0 %}
-{% assign arr = [ "/" ] %}
+{% assign arr = "/" | split: "" %}
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% unless item.url contains currentMenu %}
