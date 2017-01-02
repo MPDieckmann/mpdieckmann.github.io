@@ -12,7 +12,7 @@ layout: null
     {% else %}
       {% assign depth = depth | minus: 1 %}
       {% assign currentMenu = arr[depth] %}
-      null]}
+      null ] },
     {% endif %}
   {% endfor %}
   {% if item.next and item.next.url contains item.url %}
@@ -35,7 +35,7 @@ layout: null
 {% endfor %}
 {% for i in arr %}
   {% unless forloop.index0 > depth %}
-null]}
+null ] },
   {% endunless %}
 {% endfor %}
-null]
+null ]
