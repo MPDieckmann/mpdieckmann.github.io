@@ -44,6 +44,14 @@ p {
   text-align: justify;
 }
 
+a[href^="http"]::before,
+a[href^="//"]::before {
+  content: "\10076";
+  font-family: "materialtheme";
+  vertical-align: -2px;
+  display: inline-block;
+}
+
 input,
 textarea,
 button {
