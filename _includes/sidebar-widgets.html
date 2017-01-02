@@ -5,24 +5,24 @@
 {% assign arr = [ "/" ] %}
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
-  {% unless item.url contains {{currentMenu}} %}
+  {% unless item.url contains currentMenu %}
     {% assign depth = depth | minus: 1 %}
     {% assign currentMenu = arr[depth] %}
 </ul></li>
   {% endunless %}
-  {% if item.next and item.next.url contains {{item.url}} %}
+  {% if item.next and item.next.url contains item.url %}
     {% assign depth = depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
     {% assign currentMenu = item.url %}
 <li>{{ item.url }}<ul>
-  {% elsif item.url contains {{currentMenu}} %}
+  {% elsif item.url contains currentMenu %}
 <li>{{ item.url }}</li>
   {% else %}
-<li>ERROR DETECTED</li>
+<li>ERROR DETECTED: {{ item.url }}|{{ currentMenu }}</li>
   {% endif %}
 {% endfor %}
 {% for i in arr %}
-  {% unless forloop.index0 > {{depth}} %}
+  {% unless forloop.index0 > depth %}
 </ul></li>
   {% endunless %}
 {% endfor %}
