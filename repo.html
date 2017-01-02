@@ -3,6 +3,15 @@ layout: null
 ---
 {{ site.time }}
 <script>
-console.log({{ site.repositories | jsonify }});
+  // array.pop
+  {% assign array = [ "/", "/wp-plugins/", "/wp-plugins/crossword-puzzle/", "/wp-plugins/crossword-puzzle/example/" ] %}
+  {% assign tmp_array = [] %}
+  {% for i in array limit: {{ array | size | minus: 1 }} %}
+    {% assign tmp_array = tmp_array | push: i %}
+  {% endfor %}
+  {% assign array = tmp_array %}
+  console.log({{ array | jsonify }});
+  {% assign currentMenu = array | last %}
+  console.log({{ currentMenu }});
 </script>
 <pre>{{output}}</pre>
