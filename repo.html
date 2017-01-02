@@ -7,7 +7,8 @@ layout: null
   {% assign array = "/,/wp-plugins/,/wp-plugins/crossword-puzzle/,/wp-plugins/crossword-puzzle/example/" | split: "," %}
   {% assign tmp_array = array | first | split: "" %}
   console.log({{ array | jsonify }}, {{ array | size }});
-  {% for i in array offset: 1 limit: {{ array | size | minus: 2 }} %}
+  {% assign my_limit = array | size | minus: 2 %}
+  {% for i in array offset: 1 limit: my_limit %}
     console.log("{{ i }}");
     {% assign tmp_array = tmp_array | push: i %}
   {% endfor %}
