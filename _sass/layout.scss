@@ -264,9 +264,7 @@ body.scrolling #header-top-bar {
 
 #header-top-bar button,
 #sidebar-close {
-  display: block;
-  background: none;
-  border: none;
+  display: block
   font: inherit;
   color: inherit;
   width: 48px;
@@ -274,6 +272,11 @@ body.scrolling #header-top-bar {
   padding: 8px;
   text-align: center;
   margin: 0;
+}
+
+#header-top-bar button {
+  background: none;
+  border: none;
 }
 
 #header-top-bar button:hover,
@@ -562,6 +565,9 @@ body.has-sidebar footer .container {
 
 #sidebar-toggle {
   display: none !important;
+}
+#sidebar-close {
+  border-right: 1px solid $themecolor;
 }
 
 sidebar-header {
