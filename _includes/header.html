@@ -22,7 +22,7 @@ input,textarea,button,article,.menu>.current-menu-item,.menu .current-menu{backg
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 {% if site.logo %}
-{% if site.logo contains "//" %}{% assign logo = site.logo %}{% else %}{% assign logo = {{ site.logo | absolute_url }} %}{% endif %}
+{% assign logo = {{ site.logo | absolute_url }} %}
     <link rel="icon" href="{{ logo }}" sizes="32x32" />
     <meta name="msapplication-TileImage" content="{{ logo }}" />
     <link rel="apple-touch-startup-image" href="{{ logo }}" />
