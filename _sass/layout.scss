@@ -49,6 +49,7 @@ a[href^="//"]::before {
   content: "\10076";
   font-family: "materialtheme";
   vertical-align: -2px;
+  margin-right: 1px;
   display: inline-block;
 }
 
