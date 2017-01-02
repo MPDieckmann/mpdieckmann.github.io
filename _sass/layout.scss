@@ -719,8 +719,8 @@ footer #copyright {
 /* START: widgets */
 
 .menu,
-.menu ul,
-.menu li,
+.menu .menu,
+.menu .menu-item,
 .menu a {
   color: inherit;
   list-style: none;
@@ -733,23 +733,26 @@ footer #copyright {
   box-sizing: border-box;
 }
 
-.menu ul {
+.menu .menu {
   display: none;
   padding-left: 10px;
 }
 
-.menu .current-menu-item>a {
+.menu .current-menu-item>a,
+.menu .current-menu>a {
   background: $theme-color;
   color: $themed-fore-color;
   font-weight: bold;
 }
 
-.menu .current-menu-item>ul {
+.menu .current-menu-item>ul,
+.menu .current-menu>ul {
   display: block;
   font-weight: normal;
 }
 
-.menu>.current-menu-item {
+.menu>.current-menu-item,
+.menu .current-menu {
   border: 1px solid $theme-color;
   background: $card-background;
 }
