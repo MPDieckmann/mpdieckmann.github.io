@@ -2,8 +2,8 @@
   <h2>Repositories</h2>
   <ul class="menu">
 {% assign depth = 0 %}
-{% assign arr = {{ "/" | relative_url }} | split: "" %}
-{% assign currentMenu = {{ "/" | relative_url }} %}
+{% assign arr = "/" | split: "" %}
+{% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% unless item.url contains currentMenu %}
     {% assign depth = depth | minus: 1 %}
