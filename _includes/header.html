@@ -22,11 +22,10 @@ input,textarea,button,article,.menu>.current-menu-item,.menu .current-menu{backg
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 {% if site.logo %}
-{% assign logo = {{ site.logo | absolute_url }} %}
-    <link rel="icon" href="{{ logo }}" sizes="32x32" />
-    <meta name="msapplication-TileImage" content="{{ logo }}" />
-    <link rel="apple-touch-startup-image" href="{{ logo }}" />
-    <link rel="apple-touch-icon-precomposed" href="{{ logo }}" />
+    <link rel="icon" href="{{ site.logo | absolute_url }}" sizes="32x32" />
+    <meta name="msapplication-TileImage" content="{{ site.logo | absolute_url }}" />
+    <link rel="apple-touch-startup-image" href="{{ site.logo | absolute_url }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ site.logo | absolute_url }}" />
 {% endif %}
 {% if site.header %}{% include {{site.header}} %}{% endif %}
   </head>
@@ -43,7 +42,7 @@ input,textarea,button,article,.menu>.current-menu-item,.menu .current-menu{backg
         </header-group>
 {% if site.logo %}
         <header-logo>
-          <a href="{{ "/" | absolute_url }}" class="bg-img" style="background-image: url('{{ logo }}')"><img src="{{ logo }}" /></a>
+          <a href="{{ "/" | absolute_url }}" class="bg-img" style="background-image: url('{{ site.logo | absolute_url }}')"><img src="{{ site.logo | absolute_url }}" /></a>
         </header-logo>
 {% endif %}
         <header-group id="header-titles">
