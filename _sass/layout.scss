@@ -262,7 +262,8 @@ body.scrolling #header-top-bar {
   background: none;
 }
 
-#header-top-bar button {
+#header-top-bar button,
+#sidebar-close {
   display: block;
   background: none;
   border: none;
@@ -626,7 +627,8 @@ sidebar-content {
     max-width: 800px;
     padding-left: 0;
   }
-  body.has-sidebar #sidebar-toggle {
+  body.has-sidebar #sidebar-toggle,
+  body.has-sidebar #sidebar-close {
     display: block !important;
     font-size: 32px;
   }
@@ -647,19 +649,6 @@ sidebar-content {
     border-bottom: 1px solid $theme-color;
     white-space: nowrap;
     overflow: hidden;
-  }
-  #sidebar-close {
-    display: inline-block;
-    display: table-cell;
-    width: 48px;
-    height: 48px;
-    background: none;
-    border-top: none;
-    border-left: none;
-    border-bottom: none;
-    vertical-align: top;
-    font-size: 32px;
-    color: #000;
   }
   sidebar-header button:hover,
   sidebar-header button:focus,
