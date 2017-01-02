@@ -40,9 +40,4 @@ Each repository (if no other license is provided) is licensed under the [GPLv3](
 <a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a></li>
 {% endif %}
 {% endfor %}
-{% for i in arr %}
-{% unless forloop.index0 > depth %}
-</ul></li>
-{% endunless %}
-{% endfor %}
 </ul>
