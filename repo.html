@@ -12,7 +12,7 @@ console.group("{{ item.url }}");
   {% for i in arr %}
 console.log("for i in arr", { depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
     {% if item.url contains currentMenu %}
-      {% continue %}
+      {% break %}
     {% else %}
       {% assign depth = depth | minus: 1 %}
       {% assign currentMenu = arr[depth] %}
@@ -22,7 +22,8 @@ null
 },{% endcapture %}
     {% endif %}
   {% endfor %}
-console.log("endfor", { depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
+// console.groupEnd();
+console.log({ depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
   {% if item.next and (item.next.url contains item.url) %}
     {% assign depth = depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
@@ -45,6 +46,7 @@ console.log("endfor", { depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" }
   "title": "{{ item.title }}"
 },{% endcapture %}
   {% endif %}
+console.groupEnd();
 {% endfor %}
 {% for i in arr %}
   {% unless forloop.index0 > depth %}
@@ -53,7 +55,6 @@ null
 ]
 },{% endcapture %}
   {% endunless %}
-console.groupEnd()
 {% endfor %}
 {% capture output %}{{ output }}
 null
