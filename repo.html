@@ -16,6 +16,7 @@ console.log("for i in arr", { depth: "{{ depth }}", currentMenu: "{{ currentMenu
     {% else %}
       {% assign depth = depth | minus: 1 %}
       {% assign currentMenu = arr[depth] %}
+console.log("{{currentMenu}}")
 {% capture output %}{{ output }}
 null
 ]
