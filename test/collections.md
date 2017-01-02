@@ -1,7 +1,7 @@
 ---
 themecolor: "#800"
 title: "Test"
-sbutitle: "Tests with jekyll collections"
+subtitle: "Tests with jekyll collections"
 ---
 
 Script for working with Jekyll-Collections to produce a powerfull navigation panel
