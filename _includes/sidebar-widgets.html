@@ -11,10 +11,9 @@
 </ul></li>
   {% endunless %}
   {% if item.next and item.next.url contains item.url %}
-    {% assign depth | plus: 1 %}
-    {% assign arr[depth] = item.url %}
-    {% assign currentMenu = item.url %}
 <li>{{ item.url }}<ul>
+  {% elsif item.url contains currentMenu %}
+<li>{{ item.url }}</li>
   {% else %}
 <li>ERROR DETECTED</li>
   {% endif %}
