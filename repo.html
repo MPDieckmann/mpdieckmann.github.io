@@ -10,9 +10,9 @@ layout: null
 {% for item in site.repositories %}
 console.group("{{ item.url }}");
   {% for i in arr %}
-    console.log({ depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
-    {% if item.url contains currentMenu or depth == 0 %}
-      {% continue 1 %}
+console.log("for i in arr", { depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
+    {% if item.url contains currentMenu %}
+      {% continue %}
     {% else %}
       {% assign depth = depth | minus: 1 %}
       {% assign currentMenu = arr[depth] %}
@@ -22,6 +22,7 @@ null
 },{% endcapture %}
     {% endif %}
   {% endfor %}
+console.log("endfor", { depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
   {% if item.next and (item.next.url contains item.url) %}
     {% assign depth = depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
