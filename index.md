@@ -36,8 +36,6 @@ Each repository (if no other license is provided) is licensed under the [GPLv3](
 {% assign currentMenu = item.url %}
 {% endif %}
 {% if depth == 0 %}
-<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}">
-<a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a></li>
+* <a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a>
 {% endif %}
 {% endfor %}
-</ul>
