@@ -7,21 +7,16 @@ html, body {
 
 h1, h2, h3, h4, h5, h6, .headline,
 hr,
-pre, blockquote,
+p, pre, blockquote,
 figure, figcaption,
 table, caption {
-  margin: 0;
-  padding: 0;
-}
-
-p {
   margin: 0 0 0.5em 0;
   padding: 0;
 }
 
 ol, ul {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
   padding-top: 0;
   padding-bottom: 0;
 }
