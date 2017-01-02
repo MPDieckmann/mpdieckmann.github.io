@@ -140,24 +140,6 @@ button:active {
   }
 }
 
-span.icon {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  vertical-align: middle;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.icon-menu {
-  background-image: url('icon-menu.png');
-}
-
-.icon-close {
-  background-image: url('icon-close.png');
-}
-
 body::before,
 header-image,
 header {
@@ -646,6 +628,7 @@ sidebar-content {
   }
   body.has-sidebar #sidebar-toggle {
     display: block !important;
+    font-size: 32px;
   }
   sidebar-header {
     display: block;
@@ -665,7 +648,7 @@ sidebar-content {
     white-space: nowrap;
     overflow: hidden;
   }
-  sidebar-header button {
+  #sidebar-close {
     display: inline-block;
     display: table-cell;
     width: 48px;
@@ -675,6 +658,8 @@ sidebar-content {
     border-left: none;
     border-bottom: none;
     vertical-align: top;
+    font-size: 32px;
+    color: #000;
   }
   sidebar-header button:hover,
   sidebar-header button:focus,
