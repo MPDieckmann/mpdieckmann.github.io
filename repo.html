@@ -3,18 +3,44 @@ layout: null
 ---
 {{ site.time }}
 <script>
-  // array.pop
-  {% assign array = "/,/wp-plugins/,/wp-plugins/crossword-puzzle/,/wp-plugins/crossword-puzzle/example/" | split: "," %}
-  {% assign tmp_array = array | first | split: "" %}
-  console.log({{ array | jsonify }}, {{ array | size }});
-  {% assign my_limit = array | size | minus: 2 %}
-  {% for i in array offset: 1 limit: my_limit %}
-    console.log("{{ i }}");
-    {% assign tmp_array = tmp_array | push: i %}
+{% assign path = "" | split: "" %}
+{% assign currentPath = path | last %}
+{% capture output %}[{% endcapture %}
+
+{% for item in site.repositories %}
+console.group({{ item.url }});
+
+console.log("before", {{ path | jsonify }}, "{{ currentPath }}");
+  {% for i in path %}
+    {% if item.url contains currentPath %}
+      {% break %}
+    {% endif %}
+    {% assign tmp_path = path | last | split: "" %}
+    {% assign tmp_limit = path | size | minus: 2 %}
+    {% for j in path offset: 1 limit: tmp_limit %}
+      {% assign tmp_path = tmp_path | push: j %}
+    {% endfor %}
+    {% assign path = tmp_path %}
+    {% assign currentPath = path | last %}
+    {% capture output %}{{ output }}null]},{% endcapture %}
   {% endfor %}
-  {% assign array = tmp_array %}
-  console.log({{ array | jsonify }}, {{ array | size }});
-  {% assign currentMenu = array | last %}
-  console.log("{{ currentMenu }}");
+console.log("after", {{ path | jsonify }}, "{{ currentPath }}");
+
+  {% if item.next and item.next.url contains item.url %}
+    {% assign path = path | push: item.url %}
+    {% assign currentPath = path | last %}
+    {% capture output %}{{ output }}{"title":"{{ item.title }}","url":"{{ item.url }}","children":[{% endcapture %}
+  {% else  %}
+    {% capture output %}{{ output }}{"title":"{{ item.title }}","url":"{{ item.url }}"},{% endcapture %}
+  {% endif %}
+
+console.groupEnd();
+{% endfor %}
+{% for i in path offset: 1 %}
+  {% capture output %}{{ output }}null]},{% endcapture %}
+{% endfor %}
+{% capture output %}{{ output }}null]{% endcapture %}
+
+console.log({{ output | jsonify }});
 </script>
 <pre>{{output}}</pre>
