@@ -32,10 +32,10 @@ console.log("after", {{ path | jsonify }}, "{{ currentPath }}");
     {% assign path = path | push: item.url %}
     {% assign currentPath = path | last %}
     {% capture output %}{{ output }}{"title":"{{ item.title }}","url":"{{ item.url }}","children":[{% endcapture %}
-    {% capture output2 %}{{ output2 }}<li><a href="{{ item.url }}">{{ item.title }}<ul>{% endcapture %}
+    {% capture output2 %}{{ output2 }}<li><a href="{{ item.url }}">{{ item.title }}</a><ul>{% endcapture %}
   {% else  %}
     {% capture output %}{{ output }}{"title":"{{ item.title }}","url":"{{ item.url }}"},{% endcapture %}
-    {% capture output2 %}{{ output2 }}<li><a href="{{ item.url }}">{{ item.title }}</li>{% endcapture %}
+    {% capture output2 %}{{ output2 }}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endcapture %}
   {% endif %}
 
 console.groupEnd();
