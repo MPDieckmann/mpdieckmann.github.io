@@ -7,11 +7,11 @@
     <link href="{{ "/css/theme.css" | absolute_url }}" type="text/css" rel="stylesheet" />
     <style type="text/css">
 h1,h2,h3,h4,h5,h6,.headline,a{color:{{page.themecolor}};}
-a:focus,body::before,input[type="button"],input[type="submit"],input[type="reset"],button,body.scrolling header,.menu .current-menu-item>a{background-color:{{page.themecolor}};}
-hr,input,textarea,button,article-meta,.comment,.comment-form .logged-in-as,sidebar-header,.menu>.current-menu-item{border-color:{{page.themecolor}};}
-a:focus,input[type="button"],input[type="submit"],input[type="reset"],button,header,header a,.menu .current-menu-item>a,.menu a:focus{color:{{page.themedforecolor}};}
+a:focus,body::before,input[type="button"],input[type="submit"],input[type="reset"],button,body.scrolling header,.menu .current-menu-item>a,.menu .current-menu>a{background-color:{{page.themecolor}};}
+hr,input,textarea,button,article-meta,.comment,.comment-form .logged-in-as,sidebar-header,.menu>.current-menu-item,.menu .current-menu{border-color:{{page.themecolor}};}
+a:focus,input[type="button"],input[type="submit"],input[type="reset"],button,header,header a,.menu .current-menu-item>a,.menu .current-menu>a,.menu a:focus{color:{{page.themedforecolor}};}
 html{background:{{page.appbackground}};}
-input,textarea,button,article,.menu>.current-menu-item{background-color:{{page.cardbackground}};}
+input,textarea,button,article,.menu>.current-menu-item,.menu .current-menu{background-color:{{page.cardbackground}};}
 @media(max-width:800px){aside #sidebar-container{background-color:{{page.cardbackground}};}}
     </style>
     <meta id="mytheme-color" name="theme-color" content="{% if page.themecolor %}{{ page.themecolor }}{% else %}{{ site.themecolor }}{% endif %}" />
