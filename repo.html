@@ -17,8 +17,7 @@ layout: null
 {% capture output %}{{ output }}
 null
 ]
-},
-{% endcapture %}
+},{% endcapture %}
     {% endif %}
   {% endfor %}
   {% if item.next and (item.next.url contains item.url) %}
@@ -28,14 +27,12 @@ null
 {% capture output %}{{ output }}
 {
   "title": "{{ item.title }}",
-  "items": ["
-{% endcapture %}
+  "items": [{% endcapture %}
   {% elsif item.url contains currentMenu %}
   {% capture output %}{{ output }}
 {
   "title": "{{ item.title }}"
-},
-{% endcapture %}
+},{% endcapture %}
   {% else %}
 {% capture output %}{{ output }}
 {
@@ -43,8 +40,7 @@ null
   "currentMenu": "{{ currentMenu }}",
   "depth": "{{ depth }}",
   "title": "{{ item.title }}"
-},
-{% endcapture %}
+},{% endcapture %}
   {% endif %}
 {% endfor %}
 {% for i in arr %}
@@ -52,13 +48,11 @@ null
 {% capture output %}{{ output }}
 null
 ]
-},
-{% endcapture %}
+},{% endcapture %}
   {% endunless %}
 {% endfor %}
 {% capture output %}{{ output }}
 null
-]
-{% endcapture %}
+]{% endcapture %}
 console.log({{ output }});
 </script>
