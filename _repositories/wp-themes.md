@@ -1,6 +1,7 @@
 ---
 title: "WordPress Themes"
 branch: "https://github.com/MPDieckmann/wp-themes/tree/master"
+icon: "palette"
 ---
 I want to emphasize that I am not liable for any damage or loss of data!
 
