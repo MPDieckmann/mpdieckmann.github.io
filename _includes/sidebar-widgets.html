@@ -4,24 +4,15 @@
 </div>
 <div class="widget">
   <h2>Pages</h2>
-  <ul class="menu">
-{% for post in site.html_pages %}
-    <li class="menu-item{% if post.url == page.url%} current-menu-item{% endif %}"><a href="{{ post.url | absolute_url }}">{% if post.title %}{{ post.title }}{% else %}{{ post.url }}{% endif %}</a></li>
-{% endfor %}
-  </ul>
+  <ul class="menu">{% assign depth = 0 %}{% assign arr = "/" | split: "" %}{% assign currentMenu = "/" %}{% for item in site.html_pages %}{% unless item.url contains currentMenu %}{% assign depth = depth | minus: 1 %}{% assign currentMenu = arr[depth] %}</ul></li>{% endunless %}{% if item.next and item.next.url contains item.url %}{% assign depth = depth | plus: 1 %}{% assign arr[depth] = item.url %}{% assign currentMenu = item.url %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url %} current-menu{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a><ul class="menu">{% elsif item.url contains currentMenu %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url %} current-menu{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a></li>{% else %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url %} current-menu{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a></li>{% endif %}{% endfor %}{% for i in arr %}{% unless forloop.index0 > depth %}</ul></li>{% endunless %}{% endfor %}</ul>
 </div>
 <div class="widget">
 <h2>Posts</h2>
-  <ul class="menu">
-{% for post in site.posts %}
-    <li class="menu-item{% if post.url == page.url%} current-menu-item{% endif %}"><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></li>
-{% endfor %}
-  </ul>
+  <ul class="menu">{% assign depth = 0 %}{% assign arr = "/" | split: "" %}{% assign currentMenu = "/" %}{% for item in site.posts %}{% unless item.url contains currentMenu %}{% assign depth = depth | minus: 1 %}{% assign currentMenu = arr[depth] %}</ul></li>{% endunless %}{% if item.next and item.next.url contains item.url %}{% assign depth = depth | plus: 1 %}{% assign arr[depth] = item.url %}{% assign currentMenu = item.url %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url %} current-menu{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a><ul class="menu">{% elsif item.url contains currentMenu %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url %} current-menu{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a></li>{% else %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url %} current-menu{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a></li>{% endif %}{% endfor %}{% for i in arr %}{% unless forloop.index0 > depth %}</ul></li>{% endunless %}{% endfor %}</ul>
 </div>
 <hr />
 <div class="widget">
-  <p></p>
-  <p>Stay up-to-date with my</p>
+  <h2>Stay up-to-date with my</h2>
   <ul class="menu">
     <li class="menu-item"><a href="{{ "/feed.rss" | absolute_url }}">RSS-Feed</a></li>
     <li class="menu-item"><a href="{{ "/feed.atom" | absolute_url }}">Atom-Feed</a></li>
