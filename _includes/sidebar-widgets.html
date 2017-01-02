@@ -8,17 +8,17 @@
 {% assign arr = [ "/" ] %}
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
-  {% if item.url contains currentMenu %}
+  {% unless item.url contains {{currentMenu}} %}
     {% assign depth = depth | minus: 1 %}
-    {% assign currentMenu = arr[depth] %}
+    {% assign currentMenu = {{arr[depth]}} %}
 </ul></li>
-  {% endif %}
-  {% if item.next and item.next.url contains item.url %}
+  {% endunless %}
+  {% if item.next and item.next.url contains {{item.url}} %}
     {% assign depth | plus: 1 %}
-    {% assign arr[depth] = item.url %}
-    {% assign currentMenu = item.url %}
+    {% assign arr[depth] = {{item.url}} %}
+    {% assign currentMenu = {{item.url}} %}
 <li>{{ item.url }}<ul>
-  {% elsif item.url contains currentMenu %}
+  {% elsif item.url contains {{currentMenu}} %}
 <li>{{ item.url }}</li>
   {% else %}
 <li>ERROR DETECTED</li>
