@@ -2,6 +2,7 @@
 title: "Crossword Puzzle Plugin"
 subtitle: "Developed by <a href=\"https://github.com/MPDieckmann/\">MPDieckmann</a>"
 branch: "https://github.com/MPDieckmann/wp-plugins/tree/crossword-puzzle"
+icon: "extension"
 ---
 
 Contributors: [MPDieckmann](https://github.com/MPDieckmann/)<br/>
