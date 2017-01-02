@@ -69,7 +69,7 @@ console.log({{ output }});
     {% assign path = path | push: item.url %}
     {% assign currentPath = path | last %}
     {% capture output %}{{ output }}{"title":"{{ item.title }}","url":"{{ item.url }}","children":[{% endcapture %}
-    <li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}"><a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a><ul class="menu"></ul>
+    <li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}"><a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a><ul class="menu">
   {% else  %}
     {% capture output %}{{ output }}{"title":"{{ item.title }}","url":"{{ item.url }}"},{% endcapture %}
     <li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}"><a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a></li>
