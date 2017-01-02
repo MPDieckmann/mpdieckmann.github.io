@@ -55,15 +55,15 @@ This mark can be splitted up in 3 parts:
 
 ### Screenshot 1
 The screenshots shows a valid csv-file (optimized for crossword puzzle)  
-![screenshot-1]({{ "/wp-plugins/crossword-plugin/screenshot-4.png" | relative_url }})
+![screenshot-1]({{ "/wp-plugins/crossword-plugin/screenshot-1.png" | relative_url }})
 
 ### Screenshot 2
 The screenshots shows the output of the valid crossword optimized csv-file (from above)  
-![screenshot-2]({{ "/wp-plugins/crossword-plugin/screenshot-4.png" | relative_url }})
+![screenshot-2]({{ "/wp-plugins/crossword-plugin/screenshot-2.png" | relative_url }})
 
 ### Screenshot 3
 The screenshots shows the dialog shown when pressing on the first arrow  
-![screenshot-3]({{ "/wp-plugins/crossword-plugin/screenshot-4.png" | relative_url }})
+![screenshot-3]({{ "/wp-plugins/crossword-plugin/screenshot-3.png" | relative_url }})
 
 ### Screenshot 4
 The screenshots shows what will happen when the `check crossword`-button is clicked (red cells: input was wrong or empty, green cells: input was correct)  
@@ -83,4 +83,4 @@ Links to csv-files:
 * [google-docs-spreadsheet.csv]({{ "/wp-plugins/crossword-plugin/google-docs-spreadsheet.csv" | relative_url }})
 * [microsoft-office-excel.csv]({{ "/wp-plugins/crossword-plugin/microsoft-office-excel.csv" | relative_url }})
 
-See an [Example]({{ "./example/" | relative_url }}).
+See an [Example]({{ "/wp-plugins/crossword-plugin/example/" | relative_url }}).
