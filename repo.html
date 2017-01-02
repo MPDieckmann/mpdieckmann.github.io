@@ -6,14 +6,16 @@ layout: null
 {% assign arr = "/" | split: "" %}
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
-  {% for i in arr %}
+  {% unless item.url contains currentMenu %}
+    {% for i in arr %}
       {% assign depth = depth | minus: 1 %}
       {% assign currentMenu = arr[depth] %}
       null ] },
-    {% if item.url contains currentMenu %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
+      {% if item.url contains currentMenu %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
   {% if item.next and item.next.url contains item.url %}
     {% assign depth = depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
