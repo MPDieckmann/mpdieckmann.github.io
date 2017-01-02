@@ -18,7 +18,7 @@
   {% elsif item.url contains currentMenu %}
 <li>{{ item.url }}</li>
   {% else %}
-<li>ERROR DETECTED: {{ item.url }}|{{ currentMenu }}</li>
+<li>ERROR DETECTED: {{ item.url }}|{{ currentMenu }}|{{ depth }}|{{ arr | jsonify }}</li>
   {% endif %}
 {% endfor %}
 {% for i in arr %}
