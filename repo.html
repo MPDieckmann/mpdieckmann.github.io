@@ -1,18 +1,17 @@
 ---
 layout: null
 ---
-[
+<script>tmp=[
 {% assign depth = 0 %}
 {% assign arr = "/" | split: "" %}
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% for i in arr %}
-    {% if item.url contains currentMenu %}
-      {% break %}
-    {% else %}
       {% assign depth = depth | minus: 1 %}
       {% assign currentMenu = arr[depth] %}
       null ] },
+    {% if item.url contains currentMenu %}
+      {% break %}
     {% endif %}
   {% endfor %}
   {% if item.next and item.next.url contains item.url %}
@@ -38,4 +37,6 @@ layout: null
 null ] },
   {% endunless %}
 {% endfor %}
-null ]
+null ];
+console.log(tmp);
+</script>
