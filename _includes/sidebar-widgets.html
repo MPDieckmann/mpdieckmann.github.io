@@ -14,9 +14,9 @@
     {% assign depth = depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
     {% assign currentMenu = item.url %}
-<li>{{ item.url }}<ul>
+<li class="menu-item{% if page.url contains item.url %} current-menu-item{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: {{ item.url }} }}</a><ul class="menu">
   {% elsif item.url contains currentMenu %}
-<li>{{ item.url }}</li>
+<li class="menu-item{% if page.url contains item.url %} current-menu-item{% endif %}"><a href="{{ item.url | absolute_url }}">{{ item.title | default: {{ item.url }} }}</a></li>
   {% else %}
 <li>ERROR DETECTED</li>
   {% endif %}
