@@ -17,8 +17,3 @@ Feel free to visit my [repositories](https://github.com/MPDieckmann?tab=reposito
 
 ## Information
 Each repository (if no other license is provided) is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)-License.
-
-## Repositories
-* [WordPress Themes](/wp-themes/)
-* [WordPress Plugins](/wp-plugins/)
-* [Snippets](/Snippets/)
