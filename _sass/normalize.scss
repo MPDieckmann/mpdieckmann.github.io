@@ -5,11 +5,6 @@ html, body {
   font: normal normal normal normal 12pt/normal "Roboto", "Calibri", "Arial", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, .headline {
-  padding: 0;
-  margin: 0.5em 0 0 0;
-}
-
 p, pre, blockquote,
 figure, figcaption,
 table, caption {
@@ -25,7 +20,9 @@ ol, ul {
 }
 
 h1, h2, h3, h4, h5, h6, .headline {
-  font-family: "Segoe Print", "Comic Sans MS", cursive, "Roboto", "Calibri", "Arial", sans-serif;
+  padding: 0;
+  margin: 0.5em 0 0.25em 0;
+  font-family: /* "Segoe Print", "Comic Sans MS", cursive, */ "Roboto", "Calibri", "Arial", sans-serif;
   font-weight: bold;
   color: $theme-color;
 }
