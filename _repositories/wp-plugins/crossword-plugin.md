@@ -80,7 +80,7 @@ Plugin is released (after multiple tests).
 ## Example
 Links to csv-files:
 
-* [crossword-sample-google-docs-spreadsheet.csv](https://raw.githubusercontent.com/MPDieckmann/wp-plugins/crossword-puzzle/crossword-puzzle/assets/crossword-sample-google-docs-spreadsheet.csv)
-* [crossword-sample-microsoft-office-excel.csv](https://raw.githubusercontent.com/MPDieckmann/wp-plugins/crossword-puzzle/crossword-puzzle/assets/crossword-sample-microsoft-office-excel.csv)
+* [google-docs-spreadsheet.csv]({{ "google-docs-spreadsheet.csv" | relative_url }})
+* [microsoft-office-excel.csv]({{ "microsoft-office-excel.csv" | relative_url }})
 
-See an [Example]({{ "/wp-plugins/crossword-puzzle/example.html" | relative_url }}).
+See an [Example]({{ "example" | relative_url }}).
