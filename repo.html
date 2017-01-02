@@ -3,7 +3,7 @@ layout: null
 ---
 {{ site.time }}
 <script>
-{% assign path = "" | split %}
+{% assign path = "" | split: "" %}
 {% assign currentPath = path | last %}
 {% capture output %}[{% endcapture %}
 
@@ -15,7 +15,7 @@ console.log("before", {{ path | jsonify }}, "{{ currentPath }}");
     {% if item.url contains currentPath %}
       {% break %}
     {% endif %}
-    {% assign tmp_path = path | last | split %}
+    {% assign tmp_path = "" | split: "" %}
     {% assign tmp_limit = path | size | minus: 2 %}
     {% for j in path offset: 1 limit: tmp_limit %}
       {% assign tmp_path = tmp_path | push: j %}
