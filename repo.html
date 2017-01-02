@@ -8,7 +8,7 @@ layout: null
 {% capture output %}[{% endcapture %}
 
 {% for item in site.repositories %}
-console.group({{ item.url }});
+console.group("{{ item.url }}");
 
 console.log("before", {{ path | jsonify }}, "{{ currentPath }}");
   {% for i in path %}
