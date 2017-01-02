@@ -4,7 +4,6 @@
 {% assign depth = 0 %}
 {% assign arr = "/" | split: "" %}
 {% assign currentMenu = "/" %}
-{% arr | jsonify %}
 {% for item in site.repositories %}
   {% unless item.url contains currentMenu %}
     {% assign depth = depth | minus: 1 %}
@@ -19,7 +18,7 @@
   {% elsif item.url contains currentMenu %}
 <li>{{ item.url }}</li>
   {% else %}
-<li>ERROR DETECTED: {{ item.url }}|{{ currentMenu }}|{{ depth }}|{{ arr | jsonify }}</li>
+<li>ERROR DETECTED</li>
   {% endif %}
 {% endfor %}
 {% for i in arr %}
