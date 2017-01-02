@@ -5,7 +5,7 @@ layout: null
 <script>
 {% assign depth = 0 %}
 {% assign arr = "/" | split: "" %}
-{% assign currentMenu = "/" %}
+{% cpature currentMenu %}{% for i in arr offset: depth limit: 1 %}{{ i }}{% endfor %}{% endcapture %}
 {% capture output %}[{% endcapture %}
 {% for item in site.repositories %}
 console.group("{{ item.url }}");
@@ -15,7 +15,7 @@ console.log("for i in arr", { depth: "{{ depth }}", currentMenu: "{{ currentMenu
       {% break %}
     {% else %}
       {% assign depth = depth | minus: 1 %}
-      {% assign currentMenu = arr[depth] %}
+      {% cpature currentMenu %}{% for i in arr offset: depth limit: 1 %}{{ i }}{% endfor %}{% endcapture %}
 console.log("{{currentMenu}}")
 {% capture output %}{{ output }}
 null
@@ -28,7 +28,7 @@ console.log({ depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
   {% if item.next and (item.next.url contains item.url) %}
     {% assign depth = depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
-    {% assign currentMenu = item.url %}
+    {% cpature currentMenu %}{% for i in arr offset: depth limit: 1 %}{{ i }}{% endfor %}{% endcapture %}
 {% capture output %}{{ output }}
 {
   "title": "{{ item.title }}",
@@ -49,13 +49,11 @@ console.log({ depth: "{{ depth }}", currentMenu: "{{ currentMenu }}" });
   {% endif %}
 console.groupEnd();
 {% endfor %}
-{% for i in arr %}
-  {% unless forloop.index0 > depth %}
+{% for i in arr limit: depth %}
 {% capture output %}{{ output }}
 null
 ]
 },{% endcapture %}
-  {% endunless %}
 {% endfor %}
 {% capture output %}{{ output }}
 null
