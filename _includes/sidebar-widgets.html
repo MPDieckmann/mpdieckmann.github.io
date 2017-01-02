@@ -6,24 +6,25 @@
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% if item.url contains currentMenu %}
-    {% unassign arr[depth] %}
     {% decrement depth %}
     {% assign currentMenu = arr[depth] %}
-    </ul></li>
+</ul></li>
   {% endif %}
   {% if item.next and item.next.url contains item.url %}
     {% increment depth %}
 	  {% assign arr[depth] = item.url %}
     {% assign currentMenu = item.url %}
-    <li>{{ item.url }}<ul>
+<li>{{ item.url }}<ul>
   {% elsif item.url contains currentMenu %}
-    <li>{{ item.url }}</li>
+<li>{{ item.url }}</li>
   {% else %}
-    <li>ERROR DETECTED</li>
+<li>ERROR DETECTED</li>
   {% endif %}
 {% endfor %}
-{% for depth in arr %}
-  </ul></li>
+{% for i in arr %}
+	{% unless forloop.index0 > depth %}
+</ul></li>
+	{% endif %}
 {% endfor %}
   </ul>
 </div>
