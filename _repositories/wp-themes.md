@@ -1,5 +1,6 @@
 ---
 title: "WordPress Themes"
+subtitle: "Developed by <a href=\"https://github.com/MPDieckmann/\">MPDieckmann</a>"
 branch: "https://github.com/MPDieckmann/wp-themes/tree/master"
 icon: "palette"
 ---
