@@ -22,4 +22,27 @@ Feel free to visit my [repositories](https://github.com/MPDieckmann?tab=reposito
 Each repository (if no other license is provided) is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)-License.
 
 ## Repositories
-<ul class="menu">{% assign depth = 0 %}{% assign arr = "/" | split: "" %}{% assign currentMenu = "/" %}{% for item in site.repositories %}{% unless item.url contains currentMenu %}{% assign depth = depth | minus: 1 %}{% assign currentMenu = arr[depth] %}</ul></li>{% endunless %}{% if item.next and item.next.url contains item.url %}{% assign depth = depth | plus: 1 %}{% assign arr[depth] = item.url %}{% assign currentMenu = item.url %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}"><a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a><ul class="menu">{% elsif item.url contains currentMenu %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}"><a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a></li>{% else %}<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}"><a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a></li>{% endif %}{% endfor %}{% for i in arr %}{% unless forloop.index > depth %}</ul></li>{% endunless %}{% endfor %}</ul>
+{% assign depth = 0 %}
+{% assign arr = "/" | split: "" %}
+{% assign currentMenu = "/" %}
+{% for item in site.repositories %}
+{% unless item.url contains currentMenu %}
+{% assign depth = depth | minus: 1 %}
+{% assign currentMenu = arr[depth] %}
+{% endunless %}
+{% if item.next and item.next.url contains item.url %}
+{% assign depth = depth | plus: 1 %}
+{% assign arr[depth] = item.url %}
+{% assign currentMenu = item.url %}
+{% endif %}
+{% if depth == 0 %}
+<li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}">
+<a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a></li>
+{% endif %}
+{% endfor %}
+{% for i in arr %}
+{% unless forloop.index0 > depth %}
+</ul></li>
+{% endunless %}
+{% endfor %}
+</ul>
