@@ -9,10 +9,11 @@ layout: null
   {% for i in arr %}
     {% if item.url contains currentMenu %}
       {% break %}
+    {% else %}
+      {% assign depth = depth | minus: 1 %}
+      {% assign currentMenu = arr[depth] %}
+      null]}
     {% endif %}
-    {% assign depth = depth | minus: 1 %}
-    {% assign currentMenu = arr[depth] %}
-null]}
   {% endfor %}
   {% if item.next and item.next.url contains item.url %}
     {% assign depth = depth | plus: 1 %}
