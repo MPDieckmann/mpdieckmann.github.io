@@ -16,7 +16,7 @@ layout: null
       {% endif %}
     {% endfor %}
   {% endunless %}
-  {% if item.next and item.next.url contains item.url %}
+  {% if item.next and (item.next.url contains item.url) %}
     {% assign depth = depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
     {% assign currentMenu = item.url %}
@@ -30,6 +30,8 @@ layout: null
   {% else %}
     {
       "type": "ERROR",
+      "currentMenu": "{{ currentMenu }}",
+      "depth": "{{ depth }}",
       "title": "{{ item.title }}"
     },
   {% endif %}
