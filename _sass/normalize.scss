@@ -5,8 +5,11 @@ html, body {
   font: normal normal normal normal 12pt/normal "Roboto", "Calibri", "Arial", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, .headline,
-hr,
+h1, h2, h3, h4, h5, h6, .headline {
+  padding: 0;
+  margin: 0 0.5em 0 0;
+}
+
 p, pre, blockquote,
 figure, figcaption,
 table, caption {
@@ -89,4 +92,5 @@ h6 {
 hr {
   border: none;
   border-top: 1px solid $theme-color;
+  margin: 0 0.5em;
 }
