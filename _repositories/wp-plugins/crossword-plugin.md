@@ -28,6 +28,7 @@ Downlaod [crossword-puzzle.zip]({{ "/wp-plugins/crossword-puzzle/crossword-puzzl
 7. Replace `__FLOAT__` with either `left` (if you wish the puzzle to flaot left) or `right` (if you wish the puzzle to float right) or leave out this attribute (so it will be displayed as a block)
 
 ## Frequently Asked Questions
+
 ### What marks a valid csv-file as `crossword puzzle optimized`?
 A `crossword puzzle optimized csv-file` will look like following:
 In the first row in first cell you have to write the keyword `crossword`; each other cell in this row must stay empty.
@@ -69,6 +70,7 @@ The screenshots shows what will happen when the `check crossword`-button is clic
 ![assets/screenshot-4](https://raw.githubusercontent.com/MPDieckmann/wp-plugins/crossword-puzzle/crossword-puzzle/assets/screenshot-4.png)
 
 ## Changelog
+
 ### 1.0
 Plugin is released (after multiple tests).
 
