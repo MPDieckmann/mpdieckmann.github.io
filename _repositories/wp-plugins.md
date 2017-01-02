@@ -13,7 +13,7 @@ Have fun with my WordPress-Plugins!
 
 Each WordPress-Plugin has its own branch in this repository except this "[master](https://github.com/MPDieckmann/wp-plugins/tree/master)" branch.
 
-Here is a list to some plugins
+## List of published plugins
 {% for item in site.repositories %}
 {% if item.url contains page.url and item.url != page.url %}
 * [{{ item.title }}]({{ item.url | relative_url }}) *([Branch]({{ item.branch }}))*
