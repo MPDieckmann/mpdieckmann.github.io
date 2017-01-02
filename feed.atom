@@ -16,9 +16,7 @@ layout: null
     <published>{{ item.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</published>
     <updated>{{ item.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</updated>
     <content type="html" xml:base="{{ item.url | absolute_url }}">{{ item.content | xml_escape }}</content>
-    <author>
-      <name>{{ item.author }}</name>
-    </author>
-    <summary type="html">{{ item.excerpt | xml_escape }}</summary>
+    <author>{{ item.author }}</author>
+    <summary type="html">{{ item.excerpt | item.content | truncate: 400 | xml_escape }}</summary>
   </entry>
 {% endfor %}</feed>
