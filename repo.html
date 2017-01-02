@@ -7,7 +7,7 @@ layout: null
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% for i in arr %}
-    {% if item.url contains currentMenu or depth == 0 %}
+    {% if item.url contains currentMenu or depth <= 0 %}
       {% break %}
     {% elsif %}
       {% assign depth = depth | minus: 1 %}
