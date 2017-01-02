@@ -7,7 +7,7 @@ layout: null
 {% assign currentPath = path | last %}
 {% capture output %}[{% endcapture %}
 
-{% for item in site.pages %}
+{% for item in site.repositories %}
 console.group("{{ item.url }}");
 
 console.log("before", {{ path | jsonify }}, "{{ currentPath }}");
