@@ -9,6 +9,12 @@
   font-style: normal;
 }
 
+span.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'materialtheme' !important;
