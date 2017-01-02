@@ -1,9 +1,13 @@
 ---
-layout: null
-title: "Jekyll Collections"
-sbutitle: "View Stacked Collections"
+themecolor: "#800"
+title: "Test"
+sbutitle: "Tests with jekyll collections"
 ---
-{{ site.time }}
+
+Script for working with Jekyll-Collections to produce a powerfull navigation panel
+
+Server-Time: {{ site.time }}
+
 <script>
 {% assign path = "" | split: "" %}
 {% assign currentPath = path | last %}
