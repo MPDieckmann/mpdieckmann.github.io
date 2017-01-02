@@ -22,20 +22,4 @@ Feel free to visit my [repositories](https://github.com/MPDieckmann?tab=reposito
 Each repository (if no other license is provided) is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)-License.
 
 ## Repositories
-{% assign depth = 0 %}
-{% assign arr = "/" | split: "" %}
-{% assign currentMenu = "/" %}
-{% for item in site.repositories %}
-{% unless item.url contains currentMenu %}
-{% assign depth = depth | minus: 1 %}
-{% assign currentMenu = arr[depth] %}
-{% endunless %}
-{% if depth < 1 %}
-* <a href="{% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}</a>
-{% endif %}
-{% if item.next and item.next.url contains item.url %}
-{% assign depth = depth | plus: 1 %}
-{% assign arr[depth] = item.url %}
-{% assign currentMenu = item.url %}
-{% endif %}
-{% endfor %}
+{% assign depth = 0 %}{% assign arr = "/" | split: "" %}{% assign currentMenu = "/" %}{% for item in site.repositories %}{% unless item.url contains currentMenu %}{% assign depth = depth | minus: 1 %}{% assign currentMenu = arr[depth] %}{% endunless %}{% if depth < 1 %}* [{% if item.icon %}<span class="icon icon-{{ item.icon }}"></span> {% endif %}{{ item.title | default: item.url }}]({% if item.url contains "http://" or item.url contains "https://" or item.url contains "//" %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}){% endif %}{% if item.next and item.next.url contains item.url %}{% assign depth = depth | plus: 1 %}{% assign arr[depth] = item.url %}{% assign currentMenu = item.url %}{% endif %}{% endfor %}
