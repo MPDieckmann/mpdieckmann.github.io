@@ -1,0 +1,153 @@
+/* To avoid CSS expressions while still supporting IE 7 and IE 6, use this script */
+/* The script tag referencing this file must be placed before the ending body tag. */
+
+/* Use conditional comments in order to target IE 7 and older:
+	<!--[if lt IE 8]><!-->
+	<script src="ie7/ie7.js"></script>
+	<!--<![endif]-->
+*/
+
+(function() {
+	function addIcon(el, entity) {
+		var html = el.innerHTML;
+		el.innerHTML = '<span style="font-family: \'materialtheme\'">' + entity + '</span>' + html;
+	}
+	var icons = {
+		'icon-arrow_left': '&#x20;',
+		'icon-arrow_down': '&#x21;',
+		'icon-arrow_right': '&#x22;',
+		'icon-arrow_up': '&#x23;',
+		'icon-keyboard_arrow_left': '&#x24;',
+		'icon-keyboard_arrow_down': '&#x25;',
+		'icon-keyboard_arrow_right': '&#x26;',
+		'icon-keyboard_arrow_up': '&#x27;',
+		'icon-code': '&#x28;',
+		'icon-undo': '&#x29;',
+		'icon-redo': '&#x2a;',
+		'icon-add': '&#x2b;',
+		'icon-add_circle': '&#x2c;',
+		'icon-add_circle_outline': '&#x2d;',
+		'icon-remove': '&#x2e;',
+		'icon-remove_circle': '&#x2f;',
+		'icon-remove_circle_outline': '&#x30;',
+		'icon-check': '&#x31;',
+		'icon-check_circle': '&#x32;',
+		'icon-check_circle_outline': '&#x33;',
+		'icon-check_all': '&#x34;',
+		'icon-check_box': '&#x35;',
+		'icon-check_box_checked': '&#x36;',
+		'icon-radio_button': '&#x37;',
+		'icon-radio_button_checked': '&#x38;',
+		'icon-close': '&#x39;',
+		'icon-close_circle': '&#x3a;',
+		'icon-close_circle_outline': '&#x3b;',
+		'icon-error': '&#x3c;',
+		'icon-error_circle': '&#x3d;',
+		'icon-error_circle_outline': '&#x3e;',
+		'icon-report': '&#x3f;',
+		'icon-warning': '&#x40;',
+		'icon-info': '&#x41;',
+		'icon-info_circle': '&#x42;',
+		'icon-info_circle_outline': '&#x43;',
+		'icon-help': '&#x44;',
+		'icon-help_circle': '&#x45;',
+		'icon-help_circle_outline': '&#x46;',
+		'icon-favorite': '&#x47;',
+		'icon-favorite_outline': '&#x48;',
+		'icon-mail': '&#x49;',
+		'icon-mail_outline': '&#x4a;',
+		'icon-label': '&#x4b;',
+		'icon-label_outline': '&#x4c;',
+		'icon-account': '&#x4d;',
+		'icon-account_outline': '&#x4e;',
+		'icon-account_box': '&#x4f;',
+		'icon-account_circle': '&#x50;',
+		'icon-account_add': '&#x51;',
+		'icon-group': '&#x52;',
+		'icon-group_outline': '&#x53;',
+		'icon-group_add': '&#x54;',
+		'icon-notifications': '&#x55;',
+		'icon-notifications_outline': '&#x56;',
+		'icon-notifications_active': '&#x57;',
+		'icon-notifications_off': '&#x58;',
+		'icon-notifications_add': '&#x59;',
+		'icon-notifications_paused': '&#x5a;',
+		'icon-dislike': '&#x5b;',
+		'icon-like': '&#x5c;',
+		'icon-reactions': '&#x5d;',
+		'icon-file_download': '&#x5e;',
+		'icon-file_upload': '&#x5f;',
+		'icon-search': '&#x60;',
+		'icon-zoom_in': '&#x61;',
+		'icon-zoom_out': '&#x62;',
+		'icon-fullscreen': '&#x63;',
+		'icon-fullscreen_exit': '&#x64;',
+		'icon-chat_bubble': '&#x65;',
+		'icon-chat_bubble_outline': '&#x66;',
+		'icon-chat_bubbles': '&#x67;',
+		'icon-gear': '&#x68;',
+		'icon-tune': '&#x69;',
+		'icon-build': '&#x6a;',
+		'icon-menu': '&#x6b;',
+		'icon-more_horiz': '&#x6c;',
+		'icon-more_vert': '&#x6d;',
+		'icon-attach_file': '&#x6e;',
+		'icon-copy': '&#x6f;',
+		'icon-cut': '&#x70;',
+		'icon-paste': '&#x71;',
+		'icon-save': '&#x72;',
+		'icon-delete': '&#x73;',
+		'icon-delete_forever': '&#x74;',
+		'icon-folder': '&#x75;',
+		'icon-folder_outline': '&#x76;',
+		'icon-folder_shared': '&#x77;',
+		'icon-folder_special': '&#x78;',
+		'icon-file': '&#x79;',
+		'icon-format_align_left': '&#x7a;',
+		'icon-format_align_center': '&#x7b;',
+		'icon-format_align_right': '&#x7c;',
+		'icon-format_align_justify': '&#x7d;',
+		'icon-format_bold': '&#x7e;',
+		'icon-format_italic': '&#x7f;',
+		'icon-format_underline': '&#x80;',
+		'icon-format_strikethrough': '&#x81;',
+		'icon-format_clear': '&#x82;',
+		'icon-format_size': '&#x83;',
+		'icon-format_color_text': '&#x84;',
+		'icon-format_color_fill': '&#x85;',
+		'icon-format_indent_decrease': '&#x86;',
+		'icon-format_indent_increase': '&#x87;',
+		'icon-format_line_spacing': '&#x88;',
+		'icon-format_list_bulleted': '&#x89;',
+		'icon-format_list_numbered': '&#x8a;',
+		'icon-format_quote': '&#x8b;',
+		'icon-security': '&#x8c;',
+		'icon-verified': '&#x8d;',
+		'icon-watch': '&#x8e;',
+		'icon-unwatch': '&#x8f;',
+		'icon-grid': '&#x90;',
+		'icon-block': '&#x91;',
+		'icon-palette': '&#x92;',
+		'icon-copyright': '&#x93;',
+		'icon-extension': '&#x94;',
+		'icon-insert_emoticon': '&#x95;',
+		'icon-external_link': '&#x96;',
+		'icon-rss_feed': '&#x97;',
+		'icon-send': '&#x98;',
+		'icon-share': '&#x99;',
+		'0': 0
+		},
+		els = document.getElementsByTagName('*'),
+		i, c, el;
+	for (i = 0; ; i += 1) {
+		el = els[i];
+		if(!el) {
+			break;
+		}
+		c = el.className;
+		c = c.match(/icon-[^\s'"]+/);
+		if (c && icons[c[0]]) {
+			addIcon(el, icons[c[0]]);
+		}
+	}
+}());
