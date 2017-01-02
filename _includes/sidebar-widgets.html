@@ -1,7 +1,7 @@
 <div class="widget">
   <h2>Repositories</h2>
 {% highlight json %}
-{% site.repositories | jsonify %}
+{{ site.repositories | jsonify }}
 {% endhighlight %}
   <ul class="menu">
 {% assign depth = 0 %}
