@@ -4,6 +4,7 @@
 {% assign depth = 0 %}
 {% assign arr = "/" | split: "" %}
 {% assign currentMenu = "/" %}
+{% arr | jsonify %}
 {% for item in site.repositories %}
   {% unless item.url contains currentMenu %}
     {% assign depth = depth | minus: 1 %}
