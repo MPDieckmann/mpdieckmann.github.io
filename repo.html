@@ -5,7 +5,7 @@ layout: null
 <script>
   // array.pop
   {% assign array = "/,/wp-plugins/,/wp-plugins/crossword-puzzle/,/wp-plugins/crossword-puzzle/example/" | split: "," %}
-  {% assign tmp_array = [] %}
+  {% assign tmp_array = array | first | split: "" %}
   console.log({{ array | jsonify }}, {{ array | size }}, {{ array | size | minus: 1 }});
   {% for i in array limit: {{ array | size | minus: 1 }} %}
     console.log({{ i }});
