@@ -17,15 +17,22 @@
         <li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}">
           <a href="{{ item.url | absolute_url }}">
             {% if item.icon %}<span class="icon icon-{{ item.icon }}"></span>{% endif %}
-            {{ item.title | default: item.url }}</a>
+            {{ item.title | default: item.url }}
+          </a>
           <ul class="menu">
     {% elsif item.url contains currentMenu %}
         <li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}">
-          <a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a>
+          <a href="{{ item.url | absolute_url }}">
+            {% if item.icon %}<span class="icon icon-{{ item.icon }}"></span>{% endif %}
+            {{ item.title | default: item.url }}
+          </a>
         </li>
     {% else %}
         <li class="menu-item{% if page.url == item.url %} current-menu-item{% elsif page.url contains item.url and item.url != "/" %} current-menu{% endif %}">
-          <a href="{{ item.url | absolute_url }}">{{ item.title | default: item.url }}</a>
+          <a href="{{ item.url | absolute_url }}">
+            {% if item.icon %}<span class="icon icon-{{ item.icon }}"></span>{% endif %}
+            {{ item.title | default: item.url }}
+          </a>
         </li>
     {% endif %}
     {% endfor %}
