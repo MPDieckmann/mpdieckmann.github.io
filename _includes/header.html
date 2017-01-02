@@ -28,6 +28,10 @@ input,textarea,button,article,.menu>.current-menu-item,.menu .current-menu{backg
     <link rel="apple-touch-startup-image" href="{{ logo }}" />
     <link rel="apple-touch-icon-precomposed" href="{{ logo }}" />
 {% endif %}
+    <!--[if lt IE 8]><!-->
+    <script src="{{ "/ie7/ie7.js" | absolute_url }}"></script>
+    <link href="{{ "/ie7/ie7.css" | absoulte_url }}" type="text/css" rel="stylesheet" />
+    <!--<![endif]-->
 {% if site.header %}{% include {{site.header}} %}{% endif %}
   </head>
   <body class="{% if site.bodyclasses %}{{ site.bodyclasses }}{% endif %}{% if site.logo %} has-logo{% endif %}{% if site.headermenu %} has-header-menu{% endif %}{% if page.headerimage %} has-header-image{% endif %}{% if site.sidebar %} has-sidebar{% endif %}">
