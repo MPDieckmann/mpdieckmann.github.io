@@ -9,6 +9,7 @@ layout: null
 {% capture output %}[{% endcapture %}
 {% for item in site.repositories %}
   {% for i in arr %}
+    console.log({"item.url": "{{ item.url }}", depth: "{{ depth }}", currentMenu: "{{ currentMenu }}"});
     {% if item.url contains currentMenu or depth == 0 %}
       {% break %}
     {% else %}
