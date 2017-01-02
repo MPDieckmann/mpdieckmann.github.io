@@ -363,6 +363,12 @@ body.scrolling #header-titles div {
   display: none;
 }
 
+#header-titles h1,
+#header-titles h2,
+#header-titles .headline {
+  margin: 0;
+}
+
 body.scrolling #header-titles h1,
 body.scrolling #header-titles h2,
 body.scrolling #header-titles .headline {
