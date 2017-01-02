@@ -264,7 +264,9 @@ body.scrolling #header-top-bar {
 
 #header-top-bar button,
 #sidebar-close {
+  cursor: pointer;
   display: block;
+  border: none;
   font: inherit;
   color: inherit;
   width: 48px;
@@ -276,7 +278,6 @@ body.scrolling #header-top-bar {
 
 #header-top-bar button {
   background: none;
-  border: none;
 }
 
 #header-top-bar button:hover,
