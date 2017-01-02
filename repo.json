@@ -6,10 +6,10 @@ layout: null
 {% assign arr = "/" | split: "" %}
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
-  {% for i in (1..{{ depth }}) %}
-  {% if item.url contains currentMenu %}
-    {% break %}
-  {% endif %}
+  {% for i in arr %}
+    {% if item.url contains currentMenu %}
+      {% break %}
+    {% endif %}
     {% assign depth = depth | minus: 1 %}
     {% assign currentMenu = arr[depth] %}
 null]}
@@ -34,6 +34,7 @@ null]}
 {% endfor %}
 {% for i in arr %}
   {% unless forloop.index0 > depth %}
-]
+null]}
   {% endunless %}
 {% endfor %}
+null]
