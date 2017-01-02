@@ -81,4 +81,4 @@ Links to csv-files:
 * [crossword-sample-google-docs-spreadsheet.csv](https://raw.githubusercontent.com/MPDieckmann/wp-plugins/crossword-puzzle/crossword-puzzle/assets/crossword-sample-google-docs-spreadsheet.csv)
 * [crossword-sample-microsoft-office-excel.csv](https://raw.githubusercontent.com/MPDieckmann/wp-plugins/crossword-puzzle/crossword-puzzle/assets/crossword-sample-microsoft-office-excel.csv)
 
-<iframe src="{{ "/wp-plugins/crossword-puzzle/example.html" | relative_url }}"></iframe>
+See an [Example]({{ "/wp-plugins/crossword-puzzle/example.html" | relative_url }}")
