@@ -6,13 +6,12 @@ layout: null
   // array.pop
   {% assign array = "/,/wp-plugins/,/wp-plugins/crossword-puzzle/,/wp-plugins/crossword-puzzle/example/" | split: "," %}
   {% assign tmp_array = array | first | split: "" %}
-  console.log({{ array | jsonify }}, {{ array | size }}, {{ array | size | minus: 1 }});
-  {% for i in array limit: {{ array | size | minus: 1 }} %}
-    console.log({{ i }});
+  console.log({{ array | jsonify }}, {{ array | size }});
+  {% for i in array offset: 1 limit: {{ array | size | minus: 1 }} %}
     {% assign tmp_array = tmp_array | push: i %}
   {% endfor %}
   {% assign array = tmp_array %}
-  console.log({{ array | jsonify }});
+  console.log({{ array | jsonify }}, {{ array | size }});
   {% assign currentMenu = array | last %}
   console.log({{ currentMenu }});
 </script>
