@@ -8,6 +8,7 @@ layout: null
   {% assign tmp_array = array | first | split: "" %}
   console.log({{ array | jsonify }}, {{ array | size }});
   {% for i in array offset: 1 limit: {{ array | size | minus: 2 }} %}
+    console.log("{{ i }}");
     {% assign tmp_array = tmp_array | push: i %}
   {% endfor %}
   {% assign array = tmp_array %}
