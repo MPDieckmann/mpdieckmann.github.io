@@ -6,7 +6,7 @@
           <article-meta>
 {% if page.author %}
             <span class="author">{{ page.author }}</span>
-{% endif %}{% if page.author && page.date %} - {% endif %}{% if page.date %}
+{% endif %}{% if page.author and page.date %} - {% endif %}{% if page.date %}
             <span class="date">{{ page.date | date: "%d.%m.%Y" }}</span>
 {% endif %}
           </article-meta>
