@@ -9,12 +9,12 @@
 {% assign currentMenu = "/" %}
 {% for item in site.repositories %}
   {% if item.url contains currentMenu %}
-    {% assign depth = depth - 1 %}
+    {% assign depth = depth | minus: 1 %}
     {% assign currentMenu = arr[depth] %}
 </ul></li>
   {% endif %}
   {% if item.next and item.next.url contains item.url %}
-    {% assign depth + 1 %}
+    {% assign depth | plus: 1 %}
     {% assign arr[depth] = item.url %}
     {% assign currentMenu = item.url %}
 <li>{{ item.url }}<ul>
