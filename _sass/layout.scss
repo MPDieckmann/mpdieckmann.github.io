@@ -272,7 +272,7 @@ body.scrolling #header-top-bar {
 }
 
 #header-top-bar button,
-#sidebar-close {
+sidebar-header button {
   cursor: pointer;
   display: block;
   border: none;
@@ -283,9 +283,6 @@ body.scrolling #header-top-bar {
   padding: 8px;
   text-align: center;
   margin: 0;
-}
-
-#header-top-bar button {
   background: none;
 }
 
