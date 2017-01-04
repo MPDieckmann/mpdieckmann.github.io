@@ -10,12 +10,10 @@ themecolor: "#6a8"
       setTimeout(timeout, 0);
     };
   })();
-
   function whenReady() {
     var buttons = document.getElementsByName("insertChar");
     var button = null;
     var textarea = document.getElementById("input");
-
     function onmousedown(event) {
       var char = this.getAttribute("data-char");
       if (char) {
@@ -43,23 +41,19 @@ themecolor: "#6a8"
     margin: 0;
     padding: 0;
   }
-  
   #toolbar {
     display: block;
     clear: both;
     text-align: center;
   }
-  
   #toolbar::after {
     content: "";
     display: block;
     clear: both;
   }
-  
   #toolbar div {
     display: inline-block;
   }
-  
   #toolbar button {
     display: inline-block;
     width: 1em;
@@ -68,9 +62,7 @@ themecolor: "#6a8"
     margin: 2px;
     font-size: 1.25em;
     box-sizing: content-box;
-    color: #000;
   }
-  
   textarea {
     font: inherit;
     display: block;
