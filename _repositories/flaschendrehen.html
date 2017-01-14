@@ -7,7 +7,7 @@ showmeta: false
   <view-header>
     <h2>Setup</h2>
   </view-header>
-  <div id="tab-view">
+  <div class="tab-headers">
     <button onclick="showTab('player-tab', this);return false;" class="active">Spieler</button>
     <button onclick="showTab('quest-tab', this);return false;">Fragen</button>
   </div>
@@ -38,7 +38,8 @@ showmeta: false
     display: block;
   }
   .player,
-  .quest {
+  .quest,
+  .tab-headers{
     display: flex;
     flex-flow: row nowrap;
   }
