@@ -7,7 +7,11 @@ showmeta: false
   <view-header>
     <h2>Setup</h2>
   </view-header>
-  <section>
+  <div id="tab-view">
+    <button onclick="showTab('player-tab', this);return false;" class="active">Spieler</button>
+    <button onclick="showTab('quest-tab', this);return false;">Fragen</button>
+  </div>
+  <section id="player-tab" class="show">
     <p>Zu Beginn können hier die Namen der Spieler eingetragen werden. Wenn nur zufällige Fragen angezeigt werden sollen, dann bitte leer lassen.</p>
     <div id="players"></div>
     <div class="player">
@@ -16,7 +20,7 @@ showmeta: false
       <button id="export-player" onclick="game.exportPlayer();return false;">Spieler exportieren</button>
     </div>
   </section>
-  <section>
+  <section id="quest-tab">
     <p>Hier werden alle Fragen angezeigt und können bearbeitet und oder gelöscht werden; neue Fragen können auch hinzugefügt werden.</p>
     <div id="quests"></div>
     <div class="quest">
@@ -26,10 +30,13 @@ showmeta: false
     </div>
   </section>
   <view-footer>
-    <button id="start" onclick="game.start();return false;">Fragen speichern und Spiel starten</button>
+    <button id="start" onclick="game.start();return false;">Einstellungen speichern und Spiel starten</button>
   </view-footer>
 </app-view>
 <style>
+  app-view {
+    display: block;
+  }
   .player,
   .quest {
     display: flex;
@@ -43,16 +50,20 @@ showmeta: false
   .quest button {
     padding: 0.5em 1em;
   }
+  section {
+    display: none;
+  }
+  section.show {
+    display: block;
+  }
   #app-view.play section {
     width: 400px;
-    display: none;
     max-width: 100%;
+    margin: 0 auto;
     flex-flow: row nowrap;
     align-items: center;
-    margin: 0 auto;
   }
   #app-view.play section.show {
-    display: block;
     display: flex;
   }
   #app-view.play section img {
@@ -61,6 +72,18 @@ showmeta: false
   }
 </style>
 <script type="text/javascript">
+  function showTab(id, button) {
+    var arr = button.parentElement.getElementsByTagName("button");
+    for (item of arr) {
+      if (item === button) {
+        item.classList.add("active");
+      }
+      else {
+        item.classList.remove("active");
+      };
+    };
+    game.showSection(id);
+  };
   var game = {
     addPlayer: function () {
       var value = arguments[0] || "";
@@ -153,6 +176,18 @@ showmeta: false
     random: function (size) {
       return Math.round(Math.random() * size);
     },
+    showSection: function (id) {
+      var appView = document.getElementById("app-view");
+      var sections = appView.getElementsByTagName("section");
+      for (section of sections) {
+        if (section.id == id) {
+          section.classList.add("show");
+        }
+        else {
+          section.classList.remove("show");
+        };
+      };
+    },
     players: [],
     quests: [],
     start: function () {
@@ -203,6 +238,7 @@ showmeta: false
       appView.appendChild(header);
       p.id = "quest";
       p.textContent = "Um das Spiel zu beenden, einfach nur den Browser(-Tab) schließen oder zum neustarten, die Seite neuladen.";
+      section.id = "questSection";
       section.className = "show";
       section.appendChild(p);
       appView.appendChild(section);
@@ -214,8 +250,7 @@ showmeta: false
       bottle.deg = 0;
       button.onclick = function (event) {
         event.preventDefault();
-        section.className = "";
-        bottleSection.className = "show";
+        game.showSection("bottleSection");
         var index = 0;
         var timeout = 360 + game.random(360);
         var interval = setInterval(function () {
@@ -226,12 +261,11 @@ showmeta: false
           if (index++ > timeout) {
             clearInterval(interval);
             setTimeout(function () {
-              bottleSection.className = "";
-              section.className = "show";
-              game.quest();
+              game.showSection("questSection");
             }, 500);
           };
         });
+        game.quest();
       };
       appView.appendChild(bottleSection);
       footer.appendChild(button);
