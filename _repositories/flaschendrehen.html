@@ -73,6 +73,9 @@ showmeta: false
     display: inline-block;
     width: 100%;
   }
+  #bottleSection {
+    overflow: hidden;
+  }
 </style>
 <script type="text/javascript">
   function showTab(id, button) {
@@ -255,13 +258,14 @@ showmeta: false
         event.preventDefault();
         game.showSection("bottleSection");
         var index = 0;
-        var timeout = 360 + game.random(360);
+        var timeout = 90 + game.random(270);
         var interval = setInterval(function () {
-          bottle.style.transform = "rotate(" + bottle.deg + "deg)";
-          if (++bottle.deg == 360) {
+          bottle.style.transform = "scale(0.8) rotate(" + bottle.deg + "deg)";
+          bottle.deg += game.random(5);
+          if (bottle.deg >= 360) {
             bottle.deg = 0;
           };
-          if (index++ > timeout) {
+          if (++index > timeout) {
             clearInterval(interval);
             setTimeout(function () {
               game.showSection("questSection");
