@@ -155,13 +155,13 @@ button.active {
 
 body::before,
 header-image,
-header {
+#page-header {
   height: 110px;
 }
 
 body.has-header-image::before,
-body.has-header-image header-image,
-body.has-header-image header {
+body.has-header-image #page-header-image,
+body.has-header-image #page-header {
   min-height: 200px;
   height: 33%;
   max-height: 400px;
@@ -182,7 +182,7 @@ header-image {
   margin: 0 auto;
 }
 
-header {
+#page-header {
   position: absolute;
   top: 0;
   left: 0;
@@ -198,7 +198,7 @@ body.has-custom-header {
   text-shadow: 0 0 1em #000;
 }
 
-body.scrolling header {
+body.scrolling #page-header {
   position: fixed;
   background: $theme-color;
   min-height: 0 !important;
@@ -213,7 +213,7 @@ body.scrolling header {
   white-space: nowrap;
 }
 
-header .container {
+#page-header .container {
   height: 100%;
   display: block;
   display: -webkit-flex;
@@ -230,25 +230,25 @@ header .container {
   transition: background 1s;
 }
 
-body.has-header-image header .container {
+body.has-header-image #page-header .container {
   background: rgba(0, 0, 0, 0.25);
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 130px);
   background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 130px);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 130px);
 }
 
-body.has-header-image.scrolling header .container {
+body.has-header-image.scrolling #page-header .container {
   background: none;
 }
 
-header a {
+#page-header a {
   color: $themed-fore-color;
 }
 
 header-group,
 header-logo,
-header h1,
-header h2 {
+#page-header h1,
+#page-header h2 {
   display: inline-block;
   position: relative;
   z-index: 2;
@@ -382,14 +382,14 @@ body.has-logo #header-titles {
   left: 110px;
 }
 
-header h1,
-header h2 {
+#page-header h1,
+#page-header h2 {
   display: block;
   width: 100%;
 }
 
 @media (max-width: 800px) {
-  body.has-header-image header .container {
+  body.has-header-image #page-header .container {
     background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 78px);
     background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 78px);
     background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 78px);
