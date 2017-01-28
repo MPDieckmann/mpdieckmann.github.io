@@ -1,7 +1,8 @@
 ---
 title: "Examples: Wahrheit.json"
-layout: none
+themecolor: "#080"
 ---
+<pre>
 [
   "Was ist das peinlichste, was dir je passiert ist?",
   "Wie viele Jungen / Mädchen hast du schon geküsst?",
@@ -47,3 +48,4 @@ layout: none
   "Wer aus der Runde wäre der beste Vater?",
   "Wer aus der Runde wäre die beste Mutter?"
 ]
+</pre>
