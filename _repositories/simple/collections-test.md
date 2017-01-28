@@ -1,6 +1,6 @@
 ---
 themecolor: "#800"
-title: "Test"
+title: "Collection Test"
 subtitle: "Tests with jekyll collections"
 ---
 
