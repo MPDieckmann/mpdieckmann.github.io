@@ -175,7 +175,7 @@ header-image {
   left: 0;
   right: 0;
   overflow: hidden;
-  z-index: 1;
+  z-index: 2;
   display: block;
   width: 100%;
   max-width: 1000px;
@@ -188,7 +188,7 @@ header-image {
   left: 0;
   right: 0;
   color: $themed-fore-color;
-  z-index: 1;
+  z-index: 2;
   -webkit-transition: background 1s;
   -moz-transition: background 1s;
   transition: background 1s;
@@ -251,7 +251,7 @@ header-logo,
 #page-header h2 {
   display: inline-block;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   -webkit-transition: width 0.3s, height 0.3s;
   -o-transition: width 0.3s, height 0.3s;
   transition: width 0.3s, height 0.3s;
@@ -613,7 +613,7 @@ sidebar-content {
 @media (max-width: 800px) {
   body.has-sidebar aside {
     right: auto;
-    z-index: 2;
+    z-index: 4;
     width: 0;
   }
   body.has-sidebar aside.show {
