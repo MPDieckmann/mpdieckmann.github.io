@@ -556,6 +556,7 @@ article-image {
 
 aside {
   display: none;
+  z-index: 1;
 }
 
 body.has-sidebar aside {
