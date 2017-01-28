@@ -1,0 +1,23 @@
+{
+  "Setup": "Setup",
+  "Settings": "Einstellungen",
+  "New Category": "Neue Kategorie",
+  "Copy data from this export-prompt": "Kopiere die Daten aus diesem Exportieren-Dialog",
+  "Paste data into this import-prompt": "Füge kopierte Daten in diesen Importieren-Dialog ein",
+  "Do you wish to clear the list before import?": "Möchtest Du die Liste leeren bevor die importierten Daten eingefügt werden?",
+  "Confirm to import data and reload page": "Bestätige, dass Du die Daten importieren und die Seite neu laden möchtest",
+  "+ add": "+ hinzufügen",
+  "Save and start": "Speichern und starten",
+  "Players": "Spieler",
+  "&gt; export": "&gt; exportieren",
+  "&lt; import": "&lt; importieren",
+  "Insert text here": "Hier Text einfügen",
+  "-": "-",
+  "Bottle": "Flasche",
+  "Categories": "Kategorie",
+  "Task": "Aufgabe",
+  "Next": "Weiter",
+  "Player": "Spieler",
+  "SpinTheBottle": "Dreh-die-Flasche!",
+  "Quit": "Beenden"
+}
