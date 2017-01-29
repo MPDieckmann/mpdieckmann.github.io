@@ -1,3 +1,4 @@
 ---
 title: "Snippets"
+icon: "folder"
 ---
