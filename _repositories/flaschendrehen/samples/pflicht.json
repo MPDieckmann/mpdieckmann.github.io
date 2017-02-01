@@ -2,8 +2,7 @@
 title: "Examples: Pflicht.json"
 themecolor: "#080"
 ---
-<pre>
-[
+<textarea readonly>[
   "Kuss auf die Wange/den Mund einer anders geschlechtliche Person.",
   "Zeige der Gruppe ein wirklich peinliches Foto von dir.",
   "Imitiere ein Tier.",
@@ -24,4 +23,4 @@ themecolor: "#080"
   "Die Gruppe darf sich ein Lied aussuchen, du musst dazu tanzen!",
   "Mache jemanden in der Gruppe ein Kompliment."
 ]
-</pre>
+</textarea>
