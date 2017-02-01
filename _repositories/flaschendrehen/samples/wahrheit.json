@@ -2,7 +2,7 @@
 title: "Examples: Wahrheit.json"
 themecolor: "#080"
 ---
-<textarea readonly rows="45" style="white-space:pre;font-family:monospace">[
+<textarea readonly rows="46" style="white-space:pre;font:0.8em monospace">[
   "Was ist das peinlichste, was dir je passiert ist?",
   "Wie viele Jungen / Mädchen hast du schon geküsst?",
   "Hast du schon einmal eine Person des gleichen Geschlechts geküsst?",
