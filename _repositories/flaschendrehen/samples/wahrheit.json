@@ -2,6 +2,7 @@
 title: "Examples: Wahrheit.json"
 themecolor: "#080"
 ---
+<p>Copy the data below and paste it into an import-dialog from a category</p>
 <textarea readonly rows="46" style="white-space:pre;font:0.8em monospace">[
   "Was ist das peinlichste, was dir je passiert ist?",
   "Wie viele Jungen / Mädchen hast du schon geküsst?",
