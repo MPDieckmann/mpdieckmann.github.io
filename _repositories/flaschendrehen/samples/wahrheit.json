@@ -2,8 +2,7 @@
 title: "Examples: Wahrheit.json"
 themecolor: "#080"
 ---
-<pre>
-[
+<textarea readonly rows="45" style="white-space:pre;font-family:monospace">[
   "Was ist das peinlichste, was dir je passiert ist?",
   "Wie viele Jungen / Mädchen hast du schon geküsst?",
   "Hast du schon einmal eine Person des gleichen Geschlechts geküsst?",
@@ -47,5 +46,4 @@ themecolor: "#080"
   "Du müsstest morgen heiraten. Wen?",
   "Wer aus der Runde wäre der beste Vater?",
   "Wer aus der Runde wäre die beste Mutter?"
-]
-</pre>
+]</textarea>
