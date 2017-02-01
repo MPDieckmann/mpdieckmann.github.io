@@ -2,6 +2,7 @@
 title: "Examples: Pflicht.json"
 themecolor: "#080"
 ---
+<p>Copy the data below and paste it into an import-dialog from a category</p>
 <textarea readonly rows="22" style="white-space:pre;font:0.8em monospace">[
   "Kuss auf die Wange/den Mund einer anders geschlechtliche Person.",
   "Zeige der Gruppe ein wirklich peinliches Foto von dir.",
