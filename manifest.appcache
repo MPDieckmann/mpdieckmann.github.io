@@ -6,7 +6,12 @@ CACHE MANIFEST
 
 CACHE:
 {{ logo }}
-{{ "/css/theme.css" | relative_url }}
+{{ "/css/theme.css" | absolute_url }}
+{{ "/css/fonts/materialtheme.eot" | absolute_url }}
+{{ "/css/fonts/materialtheme.svg" | absolute_url }}
+{{ "/css/fonts/materialtheme.ttf" | absolute_url }}
+{{ "/css/fonts/materialtheme.woff" | absolute_url }}
+
 
 NETWORK:
 http://*
