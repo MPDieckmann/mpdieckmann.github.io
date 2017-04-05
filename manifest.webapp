@@ -1,0 +1,38 @@
+{
+  "name": "MPDieckmann",
+  "description": "MPDieckmann on GitHub.com",
+  "version": "0.5.5",
+  "type": "privileged",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "MPDieckmann",
+    "url": "https://github.com/mpdieckmann"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "activities": {
+    "view": {
+      "href": "/index.html",
+      "disposition": "window",
+      "filters": {
+        "type": "url",
+        "url": {
+          "required": true,
+          "pattern": "https?:mpdieckmann.github.io",
+          "regexp": "^https?:mpdieckmann.github.io"
+        }
+      },
+      "returnValue": false
+    }
+  },
+  "orientation": "portrait-primary",
+  "icons": {
+    "16": "https://avatars.githubusercontent.com/u/11699531?s=16",
+    "32": "https://avatars.githubusercontent.com/u/11699531?s=16",
+    "64": "https://avatars.githubusercontent.com/u/11699531?s=16",
+    "90": "https://avatars.githubusercontent.com/u/11699531?s=16",
+    "120": "https://avatars.githubusercontent.com/u/11699531?s=16",
+    "128": "https://avatars.githubusercontent.com/u/11699531?s=16"
+  }
+}
