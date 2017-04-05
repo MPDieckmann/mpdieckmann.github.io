@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="{% if page.lang %}{{ page.lang }}{% else %}{{ site.lang }}{% endif %}" manifest="/manifest.webapp">
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}{{ site.lang }}{% endif %}">
   <head>
     <meta charset="UTF-8">
     <base href="{{ "/" | absolute_url }}" />
     <title>{% if page.title %}{{ page.title }} &ndash; {% endif %}{{ site.title }}</title>
     <link href="{{ "/css/theme.css" | relative_url }}" type="text/css" rel="stylesheet" />
+    <link rel="manifest" href="manifest.webapp.json" />
     <style type="text/css">
 h1,h2,h3,h4,h5,h6,.headline,a{color:{{page.themecolor}};}
 html{background:{{page.appbackground}};}
