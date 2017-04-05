@@ -12,7 +12,7 @@ self.addEventListener("activate", function (event) {
 self.addEventListener("fetch", function (event) {
   event.respondWith(caches.open(CACHE_NAME).then(function (cache) {
     if (navigator.onLine) {
-      fetch(event.request).then(function (response) {
+      return fetch(event.request).then(function (response) {
         if (response.ok) {
           return cache.add(event.request.clone(), response.clone()).then(function () {
             return response;
@@ -22,9 +22,9 @@ self.addEventListener("fetch", function (event) {
         }
         else {
           return event.delete(event.request.clone()).then(function () {
-            return response;
-          }, function () {
-            return response;
+            return response || new Response("<h1>Page not found</h1><p>I don't know why, but somehow a network error must be occurred</p>");
+          }, function (error) {
+            return response || new Response("<h1>Page not found</h1><p>I don't know why, but somehow a network error must be occurred</p><details><summary><p>" + error.message + "</p></summary><pre>" + error.stack + "</pre></details>");
           });
         }
       });
@@ -38,7 +38,7 @@ self.addEventListener("fetch", function (event) {
           return new Response("<h1>Not Cached</h1><p>You are offline and haven't visited this site before to cache it. Please go online and <a href=\"javascript:window.location.reload();\">reload</a> this page.</p>");
         }
       }, function (error) {
-         return new Response("<h1>An error occured</h1><details><summary><p>" + e.message + "</p></summary><pre>" + e.stack + "</pre></details>");
+         return new Response("<h1>An error occured</h1><details><summary><p>" + error.message + "</p></summary><pre>" + error.stack + "</pre></details>");
       });
     }
   }));
