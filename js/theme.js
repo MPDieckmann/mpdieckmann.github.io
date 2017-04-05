@@ -81,7 +81,6 @@ if (navigator.serviceWorker) {
   }
   
   navigator.serviceWorker.register("{{ "/js/serviceworker.js" | absolute_url }}").then(function(registration) {
-    console.log("Offline worker registered");
     registration.addEventListener("updatefound", function () {
       var $installing = this.installing;
       $installing.addEventListener("statechange", function () {
@@ -90,12 +89,12 @@ if (navigator.serviceWorker) {
             navigator.serviceWorker.controller && confirmUpdate();
             break;
           case "redundant":
-            console.error("The installing service worker became redundant.");
+            console.error("The installing service-worker became redundant.");
             break;
         }
       });
     });
   }).catch(function(e) {
-    console.error("Offline register SW error", e);
+    console.error("service-worker ergistration failed:", e);
   });
 }
