@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{% if page.lang %}{{ page.lang }}{% else %}{{ site.lang }}{% endif %}">
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}{{ site.lang }}{% endif %}" manifest="/manifest.webapp">
   <head>
     <meta charset="UTF-8">
     <base href="{{ "/" | absolute_url }}" />
