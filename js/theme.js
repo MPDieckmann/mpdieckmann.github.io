@@ -65,36 +65,7 @@ function ifReady() {
 };
 
 if (navigator.serviceWorker) {
-  function confirmUpdate() {
-    var $value = true;
-    try {
-      $value = confirm("A new version of this webprogram is found and downloaded. Do you want to update it right now?");
-    }
-    catch (e) {
-      $value = false;
-    }
-    setTimeout(function() {
-      if ($value) {
-        window.location.reload();
-      }
-    }, 10);
-  }
-  
-  navigator.serviceWorker.register("{{ "/serviceworker.js" | absolute_url }}").then(function(registration) {
-    registration.addEventListener("updatefound", function () {
-      var $installing = this.installing;
-      $installing.addEventListener("statechange", function () {
-        switch ($installing.state) {
-          case "installed":
-            navigator.serviceWorker.controller && confirmUpdate();
-            break;
-          case "redundant":
-            console.error("The installing service-worker became redundant.");
-            break;
-        }
-      });
-    });
-  }).catch(function(e) {
+  navigator.serviceWorker.register("{{ "/serviceworker.js" | absolute_url }}").catch(function(e) {
     console.error("service-worker registration failed:", e);
   });
 }
