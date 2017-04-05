@@ -1,4 +1,4 @@
-var SERVICE_WORKER_VERSION = 201704051749;
+var SERVICE_WORKER_VERSION = 201704051845;
 var CACHE_NAME = "MPDieckmann-Cache-v1";
 
 self.addEventListener("install", function (event) {
