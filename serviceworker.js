@@ -21,7 +21,7 @@ self.addEventListener("fetch", function (event) {
           });
         }
         else {
-          return event.delete(event.request.clone()).then(function () {
+          return cache.delete(event.request.clone()).then(function () {
             return response || new Response("<h1>Page not found</h1><p>I don't know why, but somehow a network error must be occurred</p>");
           }, function (error) {
             return response || new Response("<h1>Page not found</h1><p>I don't know why, but somehow a network error must be occurred</p><details><summary><p>" + error.message + "</p></summary><pre>" + error.stack + "</pre></details>");
