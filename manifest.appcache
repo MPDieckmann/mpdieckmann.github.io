@@ -1,0 +1,14 @@
+---
+layout: none
+---
+CACHE MANIFEST
+# Time: 2017.04.05 17:08
+
+CACHE:
+{{ logo }}
+{{ "/css/theme.css" | relative_url }}
+
+NETWORK:
+http://*
+https://*
+*
