@@ -1,4 +1,5 @@
 ---
+layout: none;
 ---
 (function timeout() {
   if (document.readyState == "complete") {
