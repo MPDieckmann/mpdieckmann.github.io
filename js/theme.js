@@ -80,7 +80,9 @@ if (navigator.serviceWorker) {
     }, 10);
   }
   
-  navigator.serviceWorker.register("{{ "/js/serviceworker.js" | absolute_url }}").then(function(registration) {
+  navigator.serviceWorker.register("{{ "/js/serviceworker.js" | absolute_url }}", {
+    scope: "{{ "/" | absolute_url }}"
+  }).then(function(registration) {
     registration.addEventListener("updatefound", function () {
       var $installing = this.installing;
       $installing.addEventListener("statechange", function () {
