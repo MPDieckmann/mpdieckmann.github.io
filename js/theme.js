@@ -80,7 +80,7 @@ if (navigator.serviceWorker) {
     }, 10);
   }
   
-  navigator.serviceWorker.register({{ "/js/serviceworker.js" | absolute_url }}).then(function(registration) {
+  navigator.serviceWorker.register("{{ "/js/serviceworker.js" | absolute_url }}").then(function(registration) {
     console.log("Offline worker registered");
     registration.addEventListener("updatefound", function () {
       var $installing = this.installing;
