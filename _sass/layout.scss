@@ -213,8 +213,8 @@ body.scrolling #page-header {
   white-space: nowrap;
 }
 
-@media (max-height: 400px) {
-  body.scrolling.scrolldown {
+@media (max-height: 600px) {
+  body.scrolling.scrolldown #page-header {
     top: -48px;
   }
 }
