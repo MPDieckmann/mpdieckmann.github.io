@@ -28,6 +28,7 @@ window.addEventListener("scroll", function (event) {
       document.body.classList.remove("scrolldown");
     };
   };
+  lastScrollPosY = window.scrollY;
 });
 
 function headerHeight() {
