@@ -11,15 +11,22 @@ layout: none;
 
 var metaThemeColor = document.getElementById("mytheme-color"),
   myThemeColor = metaThemeColor.getAttribute("content"),
-  sidebarOpened = false;
-
+  sidebarOpened = false,
+  lastScrollPosY = window.scrollY;
 window.addEventListener("scroll", function (event) {
-  if (window.scrollY < headerHeight() - 48) {
+  var offset = headerHeight();
+  if (window.scrollY < offset - 48) {
     document.body.classList.remove("scrolling");
     metaThemeColor.setAttribute("content", (" " + document.body.className + " ").indexOf(" has-header-image ") >= 0 ? "#020202" : myThemeColor);
   } else {
-    document.body.classList.add("scrolling");
-    metaThemeColor.setAttribute("content", myThemeColor);
+      document.body.classList.add("scrolling");
+      metaThemeColor.setAttribute("content", myThemeColor);
+    if (window.scrollY > lastScrollPosY && window.scrollY >= offset) {
+      document.body.classList.add("scrolldown");
+    }
+    else {
+      document.body.classList.remove("scrolldown");
+    };
   };
 });
 
