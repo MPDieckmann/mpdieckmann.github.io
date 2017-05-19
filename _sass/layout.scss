@@ -189,9 +189,9 @@ header-image {
   right: 0;
   color: $themed-fore-color;
   z-index: 2;
-  -webkit-transition: background 1s;
-  -moz-transition: background 1s;
-  transition: background 1s;
+  -webkit-transition: background 1s, top 0.3s;
+  -moz-transition: background 1s, top 0.3s;
+  transition: background 1s, top 0.3s;
 }
 
 body.has-custom-header {
@@ -207,10 +207,16 @@ body.scrolling #page-header {
   text-shadow: none;
   -webkit-box-shadow: 0 0 0.5em 0 #000;
   box-shadow: 0 0 0.5em 0 #000;
-  -webkit-transition: background 0s;
-  -moz-transition: background 0s;
-  transition: background 0s;
+  -webkit-transition: background 0s, top 0.3s;
+  -moz-transition: background 0s, top 0.3s;
+  transition: background 0s, top 0.3s;
   white-space: nowrap;
+}
+
+@media (max-height: 400px) {
+  body.scrolling.scrolldown {
+    top: -48px;
+  }
 }
 
 #page-header .container {
