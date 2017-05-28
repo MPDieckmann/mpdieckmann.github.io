@@ -85,11 +85,9 @@ themecolor: "#880000"
 <script type="text/javascript">
   var VerbAnalysisHebrewData = [];
   try {
-    JSON.parse(localStorage.getItem("VerbAnalysisHebrewData") || "[]");
+    VerbAnalysisHebrewData = JSON.parse(localStorage.getItem("VerbAnalysisHebrewData") || "[]");
   }
   catch (e) { }
-  
-  debugger;
   
   var app = {
     loadData: function () {
