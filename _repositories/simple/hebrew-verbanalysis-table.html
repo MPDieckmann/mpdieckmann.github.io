@@ -187,8 +187,12 @@ themecolor: "#165853"
   
   table#app-app {
     border-spacing: 0;
-    white-space: pre-line;
     font-family: "SBL BibLit", "SBL_BibLit", "Times New Roman", "Times", serif;
+  }
+  
+  table#app-app tbody td {
+    border: 1px solid;
+    white-space: pre-line;
   }
   
   table#app-app tbody tr:nth-child(even) {
@@ -204,6 +208,10 @@ themecolor: "#165853"
   table button,
   table select {
     margin: 0;
+  }
+  
+  table select {
+    padding-right: 1em;
   }
   
   #clearList {
