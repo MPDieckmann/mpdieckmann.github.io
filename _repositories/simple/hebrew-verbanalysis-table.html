@@ -1,6 +1,6 @@
 ---
-title: "Hebrew Verbanalysis Table"
-themecolor: "#008800"
+title: "Verbanalysis (hebrew)"
+themecolor: "#880000"
 ---
 <table id="app-app">
   <thead>
@@ -84,95 +84,99 @@ themecolor: "#008800"
 </table>
 <script type="text/javascript">
   var VerbAnalysisHebrewData = [];
-try {
-	JSON.parse(localStorage.getItem("VerbAnalysisHebrewData") || "[]");
-}
-catch (e) { }
-
-var app = {
-	loadData: function () {
-		var $innerHTML = "";
-		var a = 0,
-			b = VerbAnalysisHebrewData.length,
-			data;
-		for (a; a < b; a++) {
-			data = VerbAnalysisHebrewData[a];
-			$innerHTML += "<tr><td>" + data.number + "</td><td>" + data.person + "</td><td>" + data.tempus + "</td><td>" + data.stamm + "</td><td>" + data.additions + "</td><td>" + data.root + "</td><td><button onclick=\"app.editItem(" + data.number + ");\"><i class=\"icon icon-paste\"></i></button></td><td><button onclick=\"app.deleteItem(" + data.number + ");\"><i class=\"icon icon-delete\"></i></button></td></tr>";
-		}
-		document.getElementById("output").innerHTML = $innerHTML;
-
-		document.getElementById("number").textContent = a + 1;
-		document.getElementById("person").value = null;
-		document.getElementById("tempus").value = null;
-		document.getElementById("stamm").value = null;
-		document.getElementById("additions").value = null;
-		document.getElementById("root").value = null;
-	},
-	putItem: function () {
-		var data = {
-			number: document.getElementById("number").textContent,
-			person: document.getElementById("person").value,
-			tempus: document.getElementById("tempus").value,
-			stamm: document.getElementById("stamm").value,
-			additions: document.getElementById("additions").value,
-			root: document.getElementById("root").value
-		};
-
-		var a = 0,
-			b = VerbAnalysisHebrewData.length;
-
-		for (a; a < b; a++) {
-			if (VerbAnalysisHebrewData[a].number == data.number) {
-				break;
-			}
-		}
-		VerbAnalysisHebrewData[a] = data;
-
-		app.loadData();
-	},
-	editItem: function (dataNumber) {
-		var a = 0,
-			b = VerbAnalysisHebrewData.length;
-
-		for (a; a < b; a++) {
-			if (VerbAnalysisHebrewData[a].number == dataNumber) {
-				break;
-			}
-		}
-		var data = VerbAnalysisHebrewData[a] || {};
-
-		document.getElementById("number").textContent = data.number || VerbAnalysisHebrewData.length + 1;
-		document.getElementById("person").value = data.person || null;
-		document.getElementById("tempus").value = data.tempus || null;
-		document.getElementById("stamm").value = data.stamm || null;
-		document.getElementById("additions").value = data.additions || null;
-		document.getElementById("root").value = data.root || null;
-	},
-	deleteItem: function (dataNumber) {
-		var a = 0,
-			b = VerbAnalysisHebrewData.length;
-		for (a; a < b; a++) {
-			if (VerbAnalysisHebrewData[a].number == dataNumber) {
-				VerbAnalysisHebrewData.splice(a, 1);
-				break;
-			}
-		}
-		
-		app.loadData();
-	},
-	clearList: function () {
-		if (confirm('M\u00F6chtest Du wirklich die Liste leeren?')) {
-			try {
-				VerbAnalysisHebrewData = [];
-				localStorage.delete('VerbAnalysisHebrewData');
-			}
-			catch (e) { }
-			app.loadData();
-		}
-	}
-};
-app.loadData();
-
+  try {
+    JSON.parse(localStorage.getItem("VerbAnalysisHebrewData") || "[]");
+  }
+  catch (e) { }
+  
+  var app = {
+    loadData: function () {
+      var $innerHTML = "";
+      var a = 0,
+        b = VerbAnalysisHebrewData.length,
+        data;
+      for (a; a < b; a++) {
+        data = VerbAnalysisHebrewData[a];
+        $innerHTML += "<tr><td>" + data.number + "</td><td>" + data.person + "</td><td>" + data.tempus + "</td><td>" + data.stamm + "</td><td>" + data.additions + "</td><td>" + data.root + "</td><td><button onclick=\"app.editItem(" + data.number + ");\"><i class=\"icon icon-paste\"></i></button></td><td><button onclick=\"app.deleteItem(" + data.number + ");\"><i class=\"icon icon-delete\"></i></button></td></tr>";
+      }
+      document.getElementById("output").innerHTML = $innerHTML;
+  
+      document.getElementById("number").textContent = a + 1;
+      document.getElementById("person").value = null;
+      document.getElementById("tempus").value = null;
+      document.getElementById("stamm").value = null;
+      document.getElementById("additions").value = null;
+      document.getElementById("root").value = null;
+  
+      try {
+        localStorage.setItem("VerbAnalysisHebrewData", JSON.stringify(VerbAnalysisHebrewData));
+      }
+      catch (e) { }
+    },
+    putItem: function () {
+      var data = {
+        number: document.getElementById("number").textContent,
+        person: document.getElementById("person").value,
+        tempus: document.getElementById("tempus").value,
+        stamm: document.getElementById("stamm").value,
+        additions: document.getElementById("additions").value,
+        root: document.getElementById("root").value
+      };
+  
+      var a = 0,
+        b = VerbAnalysisHebrewData.length;
+  
+      for (a; a < b; a++) {
+        if (VerbAnalysisHebrewData[a].number == data.number) {
+          break;
+        }
+      }
+      VerbAnalysisHebrewData[a] = data;
+  
+      app.loadData();
+    },
+    editItem: function (dataNumber) {
+      var a = 0,
+        b = VerbAnalysisHebrewData.length;
+  
+      for (a; a < b; a++) {
+        if (VerbAnalysisHebrewData[a].number == dataNumber) {
+          break;
+        }
+      }
+      var data = VerbAnalysisHebrewData[a] || {};
+  
+      document.getElementById("number").textContent = data.number || VerbAnalysisHebrewData.length + 1;
+      document.getElementById("person").value = data.person || null;
+      document.getElementById("tempus").value = data.tempus || null;
+      document.getElementById("stamm").value = data.stamm || null;
+      document.getElementById("additions").value = data.additions || null;
+      document.getElementById("root").value = data.root || null;
+    },
+    deleteItem: function (dataNumber) {
+      var a = 0,
+        b = VerbAnalysisHebrewData.length;
+      for (a; a < b; a++) {
+        if (VerbAnalysisHebrewData[a].number == dataNumber) {
+          VerbAnalysisHebrewData.splice(a, 1);
+          break;
+        }
+      }
+  
+      app.loadData();
+    },
+    clearList: function () {
+      if (confirm('M\u00F6chtest Du wirklich die Liste leeren?')) {
+        try {
+          VerbAnalysisHebrewData = [];
+          localStorage.delete('VerbAnalysisHebrewData');
+        }
+        catch (e) { }
+        app.loadData();
+      }
+    }
+  };
+  app.loadData();
 </script>
 <style type="text/css">
   table#app-app {
