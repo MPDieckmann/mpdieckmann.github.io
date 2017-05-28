@@ -55,7 +55,8 @@ a[href^="//"]::before {
 
 input,
 textarea,
-button {
+button,
+select {
   display: block;
   width: 100%;
   border: 1px solid $theme-color;
@@ -71,9 +72,11 @@ button {
 input:hover,
 textarea:hover,
 button:hover,
+select:hover,
 input:focus,
 textarea:focus,
-button:focus {
+button:focus,
+select:focus {
   outline: none;
   border-color: #000;
 }
