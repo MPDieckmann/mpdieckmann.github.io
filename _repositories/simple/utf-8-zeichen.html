@@ -4,6 +4,29 @@ themecolor: "#009688"
 ---
 <div id="editor">
 <style>
+  #editor.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  @media (orientation: landscape) {
+    #editor.fullscreen {
+      flex-flow: row nowrap;
+    }
+  }
+  
+  #editor button {
+    margin: 0;
+  }
+  
   #editor div,
   #editor summary,
   #editor textarea {
@@ -19,9 +42,10 @@ themecolor: "#009688"
   }
 
   #editor section {
-    display: block;
+    display: flex;
+    flex-flow: column nowrap;
     width: 100%;
-    height: 50%;
+    height: 100%;
     overflow: auto;
   }
 
@@ -451,7 +475,7 @@ themecolor: "#009688"
       "02FF": "tiefliegender Pfeil nach links",
     }
   };
-  document.write("<section>");
+  document.write("<section><button onclick=\"this.parentElement.parentElement.classList.toggle('fullscreen');\">Vollbild</button>");
   Object.keys(zeichen).forEach(arr => {
     document.write("<details><summary onmousedown=\"this.parentElement.classList.toggle('open');return false;\">" +
       arr + "</summary><pre>");
