@@ -1,0 +1,480 @@
+---
+title: "Texteditor mit diakritischen UTF-8 Zeichen (hebräisch)"
+themecolor: "#6a8"
+---
+<style>
+  html,
+  body {
+    margin: 0;
+  }
+
+  div,
+  summary,
+  textarea {
+    display: block;
+    font: 1em/1.5 Alef, 'SBL BibLit', 'SBL Hebrew', 'SBL Greek', 'David CLM', 'Frenk Ruehl CLM', 'Hadasim CLM', Shofar, 'Ezra SIL', 'Ezra SIL SR', Cardo, 'Noto Sans Hebrew', David, FreeSerif, 'Times New Roman', FreeSans, Arial;
+    margin: 0;
+    border: 1px solid;
+    padding: 0.5em;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
+  section {
+    display: block;
+    width: 100%;
+    height: 50%;
+    overflow: auto;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100%;
+    font: inherit;
+    font-size: 2em;
+    padding: 0.25em;
+    overflow: auto;
+  }
+
+  summary {
+    background: #eee;
+  }
+
+  details {
+    border: 1px solid;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+  details.open>* {
+    display: flex;
+  }
+
+  pre {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  div {
+    flex: 1 1 200px;
+    padding: 0.5em;
+  }
+
+  input {
+    display: inline-block;
+    text-align: center;
+    font: inherit;
+    font-weight: normal;
+    font-size: 2em;
+    background: #eee;
+    border: 1px solid;
+    padding: 0em 0.5em;
+    margin: 0 0.5em 0 0;
+    width: 2em;
+    height: 2em;
+  }
+
+  i {
+    font-style: normal;
+  }
+
+  div:hover {
+    background: #ff0;
+  }
+</style>
+<section>
+  <textarea></textarea>
+</section>
+<script>
+  var textarea = document.querySelector("textarea");
+  textarea.focus();
+  var zeichen = {
+    // Hebräisches Diakritikum
+    hebrewDiakritica: {
+      "0591": "Etnahta",
+      "0592": "Segol",
+      "0593": "Schalschelet",
+      "0594": "Zakef Katan",
+      "0595": "Zakef Gadol",
+      "0596": "Tipeha",
+      "0597": "Rewia",
+      "0598": "Zarka",
+      "0599": "Paschta",
+      "059A": "Jetiw",
+      "059B": "Tewir",
+      "059C": "Geresch",
+      "059D": "Geresch Mukdam",
+      "059E": "Gerschajim",
+      "059F": "Karnej Para",
+      "05A0": "Telischa Gedola",
+      "05A1": "Pazer",
+      "05A2": "Atnah Hafuch",
+      "05A3": "Munah",
+      "05A4": "Mahapach",
+      "05A5": "Mercha",
+      "05A6": "Mercha Kefula",
+      "05A7": "Darga",
+      "05A8": "Kadma",
+      "05A9": "Telischa Ketana",
+      "05AA": "Jerah Ben Jomo",
+      "05AB": "Ole",
+      "05AC": "Iluj",
+      "05AD": "Dehi",
+      "05AE": "Zinor",
+      "05AF": "Masora-Kreis",
+    },
+    // Hebräisches Zeichen
+    hebrewSigns: {
+      "05B0": "Schewa",
+      "05B1": "Chatef Segol",
+      "05B2": "Chatef Patach",
+      "05B3": "Chatef Kametz",
+      "05B4": "Hirik",
+      "05B5": "Tzere",
+      "05B6": "Segol",
+      "05B7": "Patach",
+      "05B8": "Kametz",
+      "05B9": "Holam",
+      "05BA": "Holam Haser für Waw",
+      "05BB": "Kibutz",
+      "05BC": "Dagesch oder Mapik",
+      "05BD": "Meteg",
+      "05BE": "Makaf",
+      "05BF": "Rafe",
+      "05C1": "Schin-Punkt",
+      "05C2": "Sin-Punkt",
+      "05C4": "oberer Punkt",
+      "05C5": "unterer Punkt",
+      "05C7": "Kametz Katan",
+    },
+    // Hebräisches Satzzeichen
+    hebrewPunctuation: {
+      "05C0": "Pasek",
+      "05C3": "Sof Pasuk",
+      "05C6": "Nun Hafucha",
+      "05F3": "Geresch",
+      "05F4": "Gerschajim",
+    },
+    // Hebräischer Buchstabe
+    hebrewLetter: {
+      "05D0": "Aleph",
+      "05D1": "Beth",
+      "05D2": "Gimel",
+      "05D3": "Daleth",
+      "05D4": "He",
+      "05D5": "Waw",
+      "05D6": "Zajin",
+      "05D7": "Chet",
+      "05D8": "Tet",
+      "05D9": "Jod",
+      "05DA": "Schluss-Kaph",
+      "05DB": "Kaph",
+      "05DC": "Lamed",
+      "05DD": "Schluss-M",
+      "05DE": "M",
+      "05DF": "Schluss-Nun",
+      "05E0": "Nun",
+      "05E1": "Samech",
+      "05E2": "Ajin",
+      "05E3": "Schluss-Pe",
+      "05E4": "Pe",
+      "05E5": "Schluss-Tzade",
+      "05E6": "Tzade",
+      "05E7": "Koph",
+      "05E8": "Resch",
+      "05E9": "Schin",
+      "05EA": "Taw",
+    },
+    // Hebräische Ligatur
+    hebrewLigature: {
+      "05F0": "jiddisches Doppel-Waw",
+      "05F1": "jiddisches Waw-Jod",
+      "05F2": "Jiddisches Doppel-Jod",
+    },
+    // Mathematical Bold Fraktur Capital
+    mathematicalBoldFrakturCapital: {
+      "1D56C": "A",
+      "1D56D": "B",
+      "1D56E": "C",
+      "1D56F": "D",
+      "1D570": "E",
+      "1D571": "F",
+      "1D572": "G",
+      "1D573": "H",
+      "1D574": "I",
+      "1D575": "J",
+      "1D576": "K",
+      "1D577": "L",
+      "1D578": "M",
+      "1D579": "N",
+      "1D57A": "O",
+      "1D57B": "P",
+      "1D57C": "Q",
+      "1D57D": "R",
+      "1D57E": "S",
+      "1D57F": "T",
+      "1D580": "U",
+      "1D581": "V",
+      "1D582": "W",
+      "1D583": "X",
+      "1D584": "Y",
+      "1D585": "Z",
+    },
+    // Mathematical Bold Fraktur Small
+    mathematicalBoldFrakturSmall: {
+      "1D586": "A",
+      "1D587": "B",
+      "1D588": "C",
+      "1D589": "D",
+      "1D58A": "E",
+      "1D58B": "F",
+      "1D58C": "G",
+      "1D58D": "H",
+      "1D58E": "I",
+      "1D58F": "J",
+      "1D590": "K",
+      "1D591": "L",
+      "1D592": "M",
+      "1D593": "N",
+      "1D594": "O",
+      "1D595": "P",
+      "1D596": "Q",
+      "1D597": "R",
+      "1D598": "S",
+      "1D599": "T",
+      "1D59A": "U",
+      "1D59B": "V",
+      "1D59C": "W",
+      "1D59D": "X",
+      "1D59E": "Y",
+      "1D59F": "Z"
+    },
+    // Combining Diacritical Marks
+    combining: {
+      "0300": "Gravis",
+      "0301": "Akut",
+      "0302": "Zirkumflex",
+      "0303": "Tilde",
+      "0304": "Makron",
+      "0305": "Überstreichung",
+      "0306": "Breve",
+      "0307": "Punkt als Überzeichen",
+      "0308": "Trema",
+      "0309": "Haken als Überzeichen",
+      "030A": "Ring als Überzeichen",
+      "030B": "Doppelakut",
+      "030C": "Hatschek",
+      "030D": "senkrechter Strich als Überzeichen",
+      "030E": "senkrechter Doppelstrich als Überzeichen",
+      "030F": "Doppelgravis",
+      "0310": "Chandrabindu",
+      "0311": "umgedrehtes Breve",
+      "0312": "umgedrehtes Komma als Überzeichen",
+      "0313": "Komma als Überzeichen",
+      "0314": "gespiegeltes Komma als Überzeichen",
+      "0315": "rechtes Komma als Überzeichen",
+      "0316": "Gravis als Unterzeichen",
+      "0317": "Akut als Unterzeichen",
+      "0318": "nach links zeigendes T als Unterzeichen",
+      "0319": "nach rechts zeigendes T als Unterzeichen",
+      "031A": "linker Winkel als Überzeichen",
+      "031B": "Horn",
+      "031C": "linker Halbring als Unterzeichen",
+      "031D": "nach oben zeigendes T als Unterzeichen",
+      "031E": "nach unten zeigendes T als Unterzeichen",
+      "031F": "Pluszeichen als Unterzeichen",
+      "0320": "Minuszeichen als Unterzeichen",
+      "0321": "Palatalisierungshaken",
+      "0322": "Retroflexhaken",
+      "0323": "Punkt als Unterzeichen",
+      "0324": "Trema als Unterzeichen",
+      "0325": "Ring als Unterzeichen",
+      "0326": "Komma als Unterzeichen",
+      "0327": "Cédille",
+      "0328": "Ogonek",
+      "0329": "senkrechter Strich als Unterzeichen",
+      "032A": "Brücke als Unterzeichen",
+      "032B": "umgedrehter Doppelbogen als Unterzeichen",
+      "032C": "Hatschek als Unterzeichen",
+      "032D": "Zirkumflex als Unterzeichen",
+      "032E": "Breve als Unterzeichen",
+      "032F": "umgedrehtes Breve als Unterzeichen",
+      "0330": "Tilde als Unterzeichen",
+      "0331": "Makron als Unterzeichen",
+      "0332": "Unterstreichung",
+      "0333": "doppelte Unterstreichung",
+      "0334": "eingeschriebene Tilde",
+      "0335": "kurze Durchstreichung",
+      "0336": "lange Durchstreichung",
+      "0337": "kurzer eingeschriebener Schrägstrich",
+      "0338": "langer eingeschriebener Schrägstrich",
+      "0339": "rechter Halbring als Unterzeichen",
+      "033A": "umgedrehte Brücke als Unterzeichen",
+      "033B": "Quadrat als Unterzeichen",
+      "033C": "Möwe als Unterzeichen",
+      "033D": "X als Überzeichen",
+      "033E": "senkrechte Tilde",
+      "033F": "doppelte Überstreichung",
+      "0340": "Tonzeichen Gravis",
+      "0341": "Tonzeichen Akut",
+      "0342": "griechische Perispomene",
+      "0343": "griechische Koronis",
+      "0344": "griechisches Trema mit Tonos",
+      "0345": "griechisches Iota subscriptum",
+      "0346": "Brücke als Überzeichen",
+      "0347": "Gleichheitszeichen als Unterzeichen",
+      "0348": "doppelter senkrechter Strich als Unterzeichen",
+      "0349": "linker Winkel als Unterzeichen",
+      "034A": "durchgestrichene Tilde als Überzeichen",
+      "034B": "Homothetie-Zeichen als Überzeichen",
+      "034C": "Fast-gleich-Zeichen als Überzeichen",
+      "034D": "Links-rechts-Pfeil als Unterzeichen",
+      "034E": "Pfeil nach oben als Unterzeichen",
+      "034F": "Graphemverbinder",
+      "0350": "rechte Pfeilspitze als Überzeichen",
+      "0351": "linker Halbring als Überzeichen",
+      "0352": "Fermate",
+      "0353": "X als Unterzeichen",
+      "0354": "linke Pfeilspitze als Unterzeichen",
+      "0355": "rechte Pfeilspitze als Unterzeichen",
+      "0356": "Pfeilspitzen nach rechts und nach oben als Unterzeichen",
+      "0357": "rechter Halbring als Überzeichen",
+      "0358": "rechter Punkt als Überzeichen",
+      "0359": "Sternchen als Unterzeichen",
+      "035A": "doppelter Ring als Unterzeichen",
+      "035B": "Blitz als Überzeichen",
+      "035C": "doppelt so breites Breve als Unterzeichen",
+      "035D": "doppelt so breites Breve",
+      "035E": "doppelt so breites Makron",
+      "035F": "doppelt so breites Makron als Unterzeichen",
+      "0360": "doppelt so breite Tilde",
+      "0361": "doppelt so breites umgedrehtes Breve",
+      "0362": "doppelt so breiter Pfeil nach rechts",
+      "0363": "lateinischer Kleinbuchstabe a",
+      "0364": "lateinischer Kleinbuchstabe e",
+      "0365": "lateinischer Kleinbuchstabe i",
+      "0366": "lateinischer Kleinbuchstabe o",
+      "0367": "lateinischer Kleinbuchstabe u",
+      "0368": "lateinischer Kleinbuchstabe c",
+      "0369": "lateinischer Kleinbuchstabe d",
+      "036A": "lateinischer Kleinbuchstabe h",
+      "036B": "lateinischer Kleinbuchstabe m",
+      "036C": "lateinischer Kleinbuchstabe r",
+      "036D": "lateinischer Kleinbuchstabe t",
+      "036E": "lateinischer Kleinbuchstabe v",
+      "036F": "lateinischer Kleinbuchstabe x"
+    },
+    ligature: {
+      "00e6": "lateinischer Klinbuchstabe ae-Ligatur"
+    },
+    // Spacing Modifier Letters
+    modifing: {
+      "02B0": "Kleinbuchstabe h",
+      "02B1": "Kleinbuchstabe h mit Haken",
+      "02B2": "Kleinbuchstabe j",
+      "02B3": "Kleinbuchstabe r",
+      "02B4": "umgedrehter Kleinbuchstabe r",
+      "02B5": "umgedrehter Kleinbuchstabe r mit Haken",
+      "02B6": "kleiner gespiegelter Großbuchstabe R",
+      "02B7": "Kleinbuchstabe w",
+      "02B8": "Kleinbuchstabe y",
+      "02B9": "Minutenzeichen",
+      "02BA": "Sekundenzeichen",
+      "02BB": "umgedrehtes Komma; ",
+      "02BC": "Apostroph",
+      "02BD": "gespiegeltes Komma",
+      "02BE": "rechter Halbkreis",
+      "02BF": "linker Halbkreis",
+      "02C0": "Knacklaut-Zeichen",
+      "02C1": "gespiegeltes Knacklaut-Zeichen",
+      "02C2": "linke Pfeilspitze",
+      "02C3": "rechte Pfeilspitze",
+      "02C4": "Pfeilspitze nach oben",
+      "02C5": "Pfeilspitze nach unten",
+      "02C6": "Zirkumflex",
+      "02C7": "Hatschek",
+      "02C8": "vertikale Linie",
+      "02C9": "Makron",
+      "02CA": "Akut",
+      "02CB": "Gravis",
+      "02CC": "vertikale Linie unten",
+      "02CD": "Makron unten",
+      "02CE": "Gravis unten",
+      "02CF": "Akut unten",
+      "02D0": "dreieckiger Doppelpunkt",
+      "02D1": "halbierter dreieckiger Doppelpunkt",
+      "02D2": "zentrierter rechter Halbkreis",
+      "02D3": "zentrierter linker Halbkreis",
+      "02D4": "letter up tack",
+      "02D5": "letter down tack",
+      "02D6": "Pluszeichen",
+      "02D7": "Minuszeichen",
+      "02D8": "Breve",
+      "02D9": "Punkt oben",
+      "02DA": "Krouzek",
+      "02DB": "Ogonek",
+      "02DC": "Kleine Tilde",
+      "02DD": "Doppelakut",
+      "02DE": "Häkchen für Rhotizität",
+      "02DF": "letter cross accent",
+      "02E0": "Kleinbuchstabe Gamma",
+      "02E1": "Kleinbuchstabe L",
+      "02E2": "Kleinbuchstabe S",
+      "02E3": "Kleinbuchstabe X",
+      "02E4": "Kleinbuchstabe gespiegelter glottaler Plosiv",
+      "02E5": "Tonbalken \"besonders hoch\" (Ebene 5)",
+      "02E6": "Tonbalken \"hoch\" (Ebene 4)",
+      "02E7": "Tonbalken \"mittel\" (Ebene 3)",
+      "02E8": "Tonbalken \"tief\" (Ebene 2)",
+      "02E9": "Tonbalken \"besonders tief\" (Ebene 1)",
+      "02EA": "Tonzeichen Yin-Austrittston",
+      "02EB": "Tonzeichen Yang-Austrittston",
+      "02EC": "Zeichen Stimmhaftigkeit",
+      "02ED": "Zeichen Unbehaucht",
+      "02EE": "Doppelapostroph",
+      "02EF": "tiefliegende Pfeilspitze nach unten",
+      "02F0": "tiefliegende Pfeilspitze nach oben",
+      "02F1": "tiefliegende Pfeilspitze nach links",
+      "02F2": "tiefliegende Pfeilspitze nach rechts",
+      "02F3": "Krouzek unten",
+      "02F4": "zentrierter Gravis",
+      "02F5": "zentrierter Doppelgravis",
+      "02F6": "zentrierter Doppelakut",
+      "02F7": "Tilde unten",
+      "02F8": "hochgestellter Doppelpunkt",
+      "02F9": "Zeichen \"Anfang hoher Ton\"",
+      "02FA": "Zeichen \"Ender hoher Ton\"",
+      "02FB": "Zeichen \"Anfang tiefer Ton\"",
+      "02FC": "Zeichen \"Ende tiefer Ton\"",
+      "02FD": "letter shelf",
+      "02FE": "letter open shelf",
+      "02FF": "tiefliegender Pfeil nach links",
+    }
+  };
+  document.write("<section>");
+  Object.keys(zeichen).forEach(arr => {
+    document.write("<details><summary onmousedown=\"this.parentElement.classList.toggle('open');return false;\">" +
+      arr + "</summary><pre>");
+    var addCircle = arr == "hebrewDiakritica" || arr == "hebrewSigns" || arr == "hebrewPunctuation" || arr ==
+      "combining";
+    Object.keys(zeichen[arr]).forEach(name => {
+      document.write('<div title="' + name + '" onmousedown="document.execCommand(\'insertText\',false,\'&#x' +
+        name + ';\');return false;"><input type="text" value="' + (addCircle ? "&#x25cc;" : "") + '&#x' +
+        name + ';" readonly /><i>' +
+        zeichen[arr][name] + "</i></div>");
+    });
+    document.write("</pre></details>");
+  });
+  document.write("</section>");
+  // document.onclick = function (event) {
+  //   var t = event.target;
+  //   while (t && t.tagName.toLowerCase() != "div") {
+  //     t = t.parentElement;
+  //   }
+  //   t.classList.toggle("verbaut");
+  // }
+</script>
