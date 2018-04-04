@@ -213,7 +213,7 @@ form.addEventListener("submit", function (event) {
 
   addEntry(row);
 
-  localStorage.setItem("csv", JSON.parse(csv));
+  localStorage.setItem("csv", JSON.stringify(csv));
 
   message("Eintrag gespeichert", "save");
 });
@@ -320,7 +320,7 @@ reset.type = "reset";
 reset.id = "reset";
 form.appendChild(reset);
 
-csv = JSON.stringify(localStorage.getItem("csv") || "[]");
+csv = JSON.parse(localStorage.getItem("csv") || "[]");
 csv.forEach(function (row) {
   addEntry(row);
 });
