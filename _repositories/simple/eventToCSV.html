@@ -88,7 +88,7 @@ input[type="reset"] {
   margin: 0.5em 0.25em;
   float: left;
 }
-th>input {
+th>input[button] {
   margin: 0;
   float: none;
 }
@@ -149,7 +149,7 @@ function thead() {
   input.type = "button";
   input.value = "Leeren";
   input.addEventListener("click", function () {
-    localStorage.deleteItem("csv");
+    localStorage.removeItem("csv");
     location.reload();
   });
   th.appendChild(input);
