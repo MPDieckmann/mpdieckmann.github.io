@@ -360,8 +360,7 @@ reset.type = "reset";
 reset.id = "reset";
 form.appendChild(reset);
 
-csv = JSON.parse(localStorage.getItem("csv") || "[]");
-csv.forEach(function (row) {
+JSON.parse(localStorage.getItem("csv") || "[]").forEach(function (row) {
   addEntry(row);
 });
 </script>
