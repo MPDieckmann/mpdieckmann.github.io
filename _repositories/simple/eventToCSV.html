@@ -2,7 +2,90 @@
 themecolor: "#86151c"
 title: "Termineingabe"
 ---
-<div id="app"></div>
+<form id="app"></form>
+<style type="text/css">
+body {
+  margin: 0;
+  padding: 0;
+}
+form {
+  display: block;
+  font: 1em/1.25 "Calibri","Noto Sans";
+  margin: 0;
+  padding: 0;
+}
+#table-container {
+  overflow: auto;
+}
+table {
+  border-collapse: collapse;
+  min-width: 100%;
+}
+th {
+  white-space: nowrap;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 0.25em;
+}
+#message-container {
+  display: block;
+}
+.message {
+  display: block;
+  padding: 0.5em;
+  margin: 0.5em;
+  border: 1px solid;
+}
+.message.info {
+  background: #eee;
+  color: #444;
+}
+.message.save {
+  background: #efe;
+  color: #040;
+}
+label {
+  display: block;
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+  font: inherit;
+  padding: 0.25em;
+  overflow: auto;
+}
+label>span {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+input,
+div[contenteditable] {
+  display: block;
+  padding: 0.125em 0.25em;
+  margin: 0;
+  width: 100%;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  font: inherit;
+}
+#title {
+  width: 100%;
+}
+#content {
+  width: 100%;
+}
+#content>div[contenteditable] {
+  min-height: 3em;
+}
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  width: auto;
+  clear: both;
+  margin: 0.5em 0.25em;
+}
+</style>
 <script type="text/javascript">
 function addTitle(title) {
   if (titles.indexOf(title) == -1) {
@@ -94,7 +177,7 @@ var titles = [];
 var venues = [];
 var categories = [];
 
-var form = document.createElement("form");
+var form = document.getElementById("app");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   event.stopPropagation();
@@ -134,93 +217,6 @@ form.addEventListener("submit", function (event) {
 
   message("Eintrag gespeichert", "save");
 });
-document.getElementById("app").appendChild(form);
-
-var style = document.createElement("style");
-style.type = "text/css";
-style.textContent = `
-body {
-  margin: 0;
-  padding: 0;
-}
-form {
-  display: block;
-  font: 1em/1.25 "Calibri","Noto Sans";
-  margin: 0;
-  padding: 0;
-}
-#table-container {
-  overflow: auto;
-}
-table {
-  border-collapse: collapse;
-  min-width: 100%;
-}
-th {
-  white-space: nowrap;
-}
-th,
-td {
-  border: 1px solid #ccc;
-  padding: 0.25em;
-}
-#message-container {
-  display: block;
-}
-.message {
-  display: block;
-  padding: 0.5em;
-  margin: 0.5em;
-  border: 1px solid;
-}
-.message.info {
-  background: #eee;
-  color: #444;
-}
-.message.save {
-  background: #efe;
-  color: #040;
-}
-label {
-  display: block;
-  width: 50%;
-  box-sizing: border-box;
-  float: left;
-  font: inherit;
-  padding: 0.25em;
-  overflow: auto;
-}
-label>span {
-  font-size: 0.9em;
-  font-weight: 500;
-}
-input,
-div[contenteditable] {
-  display: block;
-  padding: 0.125em 0.25em;
-  width: 100%;
-  border: 1px solid #aaa;
-  box-sizing: border-box;
-  font: inherit;
-}
-#title {
-  width: 100%;
-}
-#content {
-  width: 100%;
-}
-#content>div[contenteditable] {
-  min-height: 3em;
-}
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  width: auto;
-  clear: both;
-  margin: 0.5em 0.25em;
-}
-`;
-form.appendChild(style);
 
 var tableContainer = document.createElement("div");
 tableContainer.id = "table-container";
@@ -290,16 +286,6 @@ venueList.id = "venueList";
 form.appendChild(venueList);
 venue.setAttribute("list", "venueList");
 
-var contentLabel = document.createElement("label");
-contentLabel.id = "content";
-form.appendChild(contentLabel);
-var contentSpan = document.createElement("span");
-contentSpan.textContent = "Beschreibung";
-contentLabel.appendChild(contentSpan);
-var content = document.createElement("div");
-content.contentEditable = "true";
-contentLabel.appendChild(content);
-
 var categoryLabel = document.createElement("label");
 categoryLabel.id = "category";
 form.appendChild(categoryLabel);
@@ -313,6 +299,16 @@ var categoryList = document.createElement("datalist");
 categoryList.id = "categoryList";
 categoryLabel.appendChild(categoryList);
 category.setAttribute("list", "categoryList");
+
+var contentLabel = document.createElement("label");
+contentLabel.id = "content";
+form.appendChild(contentLabel);
+var contentSpan = document.createElement("span");
+contentSpan.textContent = "Beschreibung";
+contentLabel.appendChild(contentSpan);
+var content = document.createElement("div");
+content.contentEditable = "true";
+contentLabel.appendChild(content);
 
 var submit = document.createElement("input");
 submit.type = "submit";
