@@ -136,9 +136,16 @@ function thead() {
     th.textContent = string;
     tr.appendChild(th);
   });
-}
-function tbody(row) {
-  
+  var th = document.createElement("th");
+  var input = document.createElement("input");
+  input.type = "button";
+  input.value = "Leeren";
+  input.addEventListener("click", function () {
+    localStorage.deleteItem("csv");
+    location.reload();
+  });
+  th.appendChild(input);
+  tr.appendChild(th);
 }
 function addEntry(row) {
   addTitle(row[0]);
@@ -162,6 +169,7 @@ function addEntry(row) {
     tr.parentElement.removeChild(tr);
     csv.splice(index, 1);
   });
+  td.appendChild(input);
   tr.appendChild(td);
 }
 function exportCSV() {
