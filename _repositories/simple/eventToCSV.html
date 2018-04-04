@@ -332,6 +332,10 @@ var contentSpan = document.createElement("span");
 contentSpan.textContent = "Beschreibung";
 contentLabel.appendChild(contentSpan);
 var content = document.createElement("textarea");
+content.addEventListener("keypress", function () {
+  content.style.height = "0px";
+  content.style.height = content.scrollHeight + "px";
+});
 contentLabel.appendChild(content);
 
 var hr2 = document.createElement("hr");
