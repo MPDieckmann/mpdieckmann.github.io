@@ -81,8 +81,8 @@ input[type="button"],
 input[type="submit"],
 input[type="reset"] {
   width: auto;
-  clear: both;
   margin: 0.5em 0.25em;
+  float: left;
 }
 </style>
 <script type="text/javascript">
@@ -241,6 +241,11 @@ $export.value = "In CSV Exportieren";
 $export.id = "export";
 form.appendChild($export);
 
+var hr1 = document.createElement("hr");
+hr1.style.clear = "both";
+hr1.style.margin = "0";
+form.appendChild(hr1);
+
 var messageContainer = document.createElement("div");
 messageContainer.id = "message-container";
 form.appendChild(messageContainer);
@@ -318,6 +323,11 @@ contentSpan.textContent = "Beschreibung";
 contentLabel.appendChild(contentSpan);
 var content = document.createElement("textarea");
 contentLabel.appendChild(content);
+
+var hr2 = document.createElement("hr");
+hr2.style.clear = "both";
+hr2.style.margin = "0";
+form.appendChild(hr2);
 
 var submit = document.createElement("input");
 submit.type = "submit";
