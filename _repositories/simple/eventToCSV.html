@@ -139,6 +139,15 @@ function thead() {
   });
 }
 function tbody(row) {
+  
+}
+function addEntry(row) {
+  addTitle(row[0]);
+  addVenue(row[4]);
+  addCategory(row[5]);
+
+  var index = csv.push(row);
+  
   var tr = document.createElement("tr");
   table.appendChild(tr);
   row.forEach(function (string) {
@@ -146,14 +155,15 @@ function tbody(row) {
     td.textContent = string;
     tr.appendChild(td);
   });
-}
-function addEntry(row) {
-  addTitle(row[0]);
-  addVenue(row[4]);
-  addCategory(row[5]);
-
-  csv.push(row);
-  tbody(row);
+  var td = document.createElement("td");
+  var input = document.createElement("input");
+  input.type = "button";
+  input.value = "Löschen";
+  input.addEventListener("click", function () {
+    tr.parentElement.removeChild(tr);
+    csv.splice(index, 1);
+  });
+  tr.appendChild(td);
 }
 function exportCSV() {
   var table = [].concat(csvHeader, csv);
