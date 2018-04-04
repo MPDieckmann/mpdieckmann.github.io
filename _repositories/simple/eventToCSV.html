@@ -1,0 +1,329 @@
+---
+themecolor: "#86151c"
+title: "Termineingabe"
+---
+
+<script type="text/javascript">
+function addTitle(title) {
+  if (titles.indexOf(title) == -1) {
+    titles.push(title);
+    var option = document.createElement("option");
+    option.value = title;
+    titleList.appendChild(option);
+  }
+}
+function addVenue(venue) {
+  if (venues.indexOf(venue) == -1) {
+    venues.push(venue);
+    var option = document.createElement("option");
+    option.value = venue;
+    venueList.appendChild(option);
+  }
+}
+function addCategory(category) {
+  if (categories.indexOf(category) == -1) {
+    categories.push(category);
+    var option = document.createElement("option");
+    option.value = category;
+    categoryList.appendChild(option);
+  }
+}
+function dateConverter(string) {
+  return string.replace(/^([0-9]{4})\-([0-9]{2})\-([0-9]{2})T([0-9]{2})\:([0-9]{2})$/, "$1-$2-$3 $4:$5:00");
+}
+function contentConverter(string) {
+  return string.replace(/\<div\>/, "").replace(/\<div\>/g, "<br/>").replace(/\<\/div\>/g, "");
+}
+function message(html, type) {
+  var div = document.createElement("message");
+  div.innerHTML = html;
+  div.className = "message " + (type || "info");
+  messageContainer.appendChild(div);
+  setTimeout(function () {
+    messageContainer.removeChild(div);
+  }, 2000);
+}
+function thead() {
+  var tr = document.createElement("tr");
+  table.appendChild(tr);
+  csvHeader.forEach(function (string) {
+    var th = document.createElement("th");
+    th.textContent = string;
+    tr.appendChild(th);
+  });
+}
+function tbody(row) {
+  var tr = document.createElement("tr");
+  table.appendChild(tr);
+  row.forEach(function (string) {
+    var td = document.createElement("td");
+    td.textContent = string;
+    tr.appendChild(td);
+  });
+}
+function addEntry(row) {
+  addTitle(row[0]);
+  addVenue(row[4]);
+  addCategory(row[5]);
+
+  csv.push(row);
+  tbody(row);
+}
+function exportCSV() {
+  var table = [].concat(csvHeader, csv);
+}
+
+var csvHeader =   [
+  "Title",
+  "Start Date",
+  "End Date",
+  "Content",
+  "Venue",
+  "Category",
+  "Tags",
+  "Recurrence schedule",
+  "Schedule meta",
+  "Recurrence frequency",
+  "Recurr until",
+  "Include dates",
+  "Exclude dates"
+];
+var csv = [];
+
+var titles = [];
+var venues = [];
+var categories = [];
+
+var form = document.createElement("form");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+
+  var row = [
+    // Title
+    title.value,
+    // Start Date
+    dateConverter(startDate.value),
+    // End Date
+    dateConverter(endDate.value),
+    // Content
+    contentConverter(content.innerHTML),
+    // Venue
+    venue.value,
+    // Category
+    category.value,
+    "",
+    // Recurrence schedule
+    "once",
+    // Schedule meta
+    "",
+    // Recurrence frequency
+    "1",
+    // Recurr until
+    dateConverter(endDate.value).replace(/ .*$/, ""),
+    // Include dates
+    "",
+    // Exclude dates
+    ""
+  ];
+
+  addEntry(row);
+
+  localStorage.setItem("csv", JSON.parse(csv));
+
+  message("Eintrag gespeichert", "save");
+});
+document.body.appendChild(form);
+
+var style = document.createElement("style");
+style.type = "text/css";
+style.textContent = `
+body {
+  margin: 0;
+  padding: 0;
+}
+form {
+  display: block;
+  font: 1em/1.25 "Calibri","Noto Sans";
+  margin: 0;
+  padding: 0.5em;
+}
+#table-container {
+  overflow: auto;
+}
+table {
+  border-collapse: collapse;
+  min-width: 100%;
+}
+th {
+  white-space: nowrap;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 0.25em;
+}
+#message-container {
+  display: block;
+}
+.message {
+  display: block;
+  padding: 0.5em;
+  margin: 0.5em;
+  border: 1px solid;
+}
+.message.info {
+  background: #eee;
+  color: #444;
+}
+.message.save {
+  background: #efe;
+  color: #040;
+}
+label {
+  display: block;
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+  font: inherit;
+  padding: 0.25em;
+  overflow: auto;
+}
+label>span {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+input,
+div[contenteditable] {
+  display: block;
+  padding: 0.125em 0.25em;
+  width: 100%;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  font: inherit;
+}
+#title {
+  width: 100%;
+}
+#content {
+  width: 100%;
+}
+#content>div[contenteditable] {
+  min-height: 3em;
+}
+input[type="submit"] {
+  width: auto;
+  clear: both;
+  margin: 0.5em 0.25em;
+}
+`;
+form.appendChild(style);
+
+var tableContainer = document.createElement("div");
+tableContainer.id = "table-container";
+form.appendChild(tableContainer);
+var table = document.createElement("table");
+tableContainer.appendChild(table);
+thead();
+
+var $export = document.createElement("input");
+$export.type = "button";
+$export.value = "In CSV Exportieren";
+$export.id = "export";
+form.appendChild($export);
+
+var messageContainer = document.createElement("div");
+messageContainer.id = "message-container";
+form.appendChild(messageContainer);
+
+var titleLabel = document.createElement("label");
+titleLabel.id = "title";
+form.appendChild(titleLabel);
+var titleSpan = document.createElement("span");
+titleSpan.textContent = "Titel";
+titleLabel.appendChild(titleSpan);
+var title = document.createElement("input");
+title.type = "text";
+titleLabel.appendChild(title);
+var titleList = document.createElement("datalist");
+titleList.id = "titleList";
+form.appendChild(titleList);
+title.setAttribute("list", "titleList");
+
+var startDateLabel = document.createElement("label");
+startDateLabel.id = "start-date";
+form.appendChild(startDateLabel);
+var startDateSpan = document.createElement("span");
+startDateSpan.textContent = "Beginn";
+startDateLabel.appendChild(startDateSpan);
+var startDate = document.createElement("input");
+startDate.addEventListener("change", function () {
+  endDate.value = startDate.value;
+});
+startDate.type = "datetime-local";
+startDateLabel.appendChild(startDate);
+
+var endDateLabel = document.createElement("label");
+endDateLabel.id = "end-date";
+form.appendChild(endDateLabel);
+var endDateSpan = document.createElement("span");
+endDateSpan.textContent = "Ende";
+endDateLabel.appendChild(endDateSpan);
+var endDate = document.createElement("input");
+endDate.type = "datetime-local";
+endDateLabel.appendChild(endDate);
+
+var venueLabel = document.createElement("label");
+venueLabel.id = "venue";
+form.appendChild(venueLabel);
+var venueSpan = document.createElement("span");
+venueSpan.textContent = "Ort";
+venueLabel.appendChild(venueSpan);
+var venue = document.createElement("input");
+venue.type = "text";
+venueLabel.appendChild(venue);
+var venueList = document.createElement("datalist");
+venueList.id = "venueList";
+form.appendChild(venueList);
+venue.setAttribute("list", "venueList");
+
+var contentLabel = document.createElement("label");
+contentLabel.id = "content";
+form.appendChild(contentLabel);
+var contentSpan = document.createElement("span");
+contentSpan.textContent = "Beschreibung";
+contentLabel.appendChild(contentSpan);
+var content = document.createElement("div");
+content.contentEditable = "true";
+contentLabel.appendChild(content);
+
+var categoryLabel = document.createElement("label");
+categoryLabel.id = "category";
+form.appendChild(categoryLabel);
+var categorySpan = document.createElement("span");
+categorySpan.textContent = "Kategorie";
+categoryLabel.appendChild(categorySpan);
+var category = document.createElement("input");
+category.type = "text";
+categoryLabel.appendChild(category);
+var categoryList = document.createElement("datalist");
+categoryList.id = "categoryList";
+categoryLabel.appendChild(categoryList);
+category.setAttribute("list", "categoryList");
+
+var submit = document.createElement("input");
+submit.type = "submit";
+submit.id = "submit";
+form.appendChild(submit);
+
+var reset = document.createElement("input");
+reset.type = "reset";
+reset.id = "reset";
+form.appendChild(reset);
+
+csv = JSON.stringify(localStorage.getItem("csv") || "[]");
+csv.forEach(function (row) {
+  addEntry(row);
+});
+</script>
