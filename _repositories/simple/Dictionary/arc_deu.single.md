@@ -1,5 +1,5 @@
 ---
-themecolor: "#ffe"
+themecolor: "#08f"
 title: "Dictionary (ARC-DEU)"
 subtitle: "Data from @EzerIT/BibleOL"
 ---
