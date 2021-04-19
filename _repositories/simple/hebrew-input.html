@@ -77,6 +77,15 @@ themecolor: "#6a8"
     direction: rtl;
     font: 2em/1em "SBL BibLit", "SBL_BibLit", "Times New Roman", "Times", serif;
   }
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    margin: 0;
+  }
 </style>
 <div id="toolbar">
   <button name="insertChar" data-char="&#1456;">&#9676;&#1456;</button>
@@ -102,3 +111,4 @@ themecolor: "#6a8"
   <button name="insertChar" data-char="&#1475;">&#1475;</button>
 </div>
 <textarea id="input" placeholder="input hebrew text here"></textarea>
+<button onclick="this.parentElement.parentElement.classList.toggle('fullscreen');">Vollbild</button>
