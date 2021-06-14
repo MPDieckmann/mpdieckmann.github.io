@@ -45,6 +45,9 @@ themecolor: "#6a8"
     margin: 0;
     padding: 0;
   }
+  article-content {
+    overflow: auto;
+  }
   #toolbar {
     display: block;
     clear: both;
@@ -78,13 +81,20 @@ themecolor: "#6a8"
     font: 2em/1.5 "SBL BibLit", "SBL_BibLit", "Times New Roman", "Times", serif;
   }
   .fullscreen {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     z-index: 2;
     margin: 0;
+  }
+  .fullscreen #toolbar {
+    position: sticky;
+    top: 0;
+    box-shadow: 0 0 0.5em 0;
+    margin: 0.5em -1em;
+    padding: 0.5em 1em;
+    background: #fff;
   }
 </style>
 <div id="toolbar">
