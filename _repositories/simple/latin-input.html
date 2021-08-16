@@ -104,44 +104,75 @@ themecolor: "#6a8"
     padding: 0.5em 1em;
     background: #fff;
   }
+  
+  hr {
+    position: relative;
+    margin: 1em 0;
+  }
+  
+  hr::before {
+    content: attr(title);
+    position: absolute;
+    background: #fff;
+    padding: 0 1em;
+    top: 0.5em;
+    left: auto;
+    right: auto;
+    margin: 0 auto;
+  }
 </style>
 <div id="toolbar">
-  <button name="insertChar" data-char="&#x0300;">&#9676;&#x0300;</button>
-  <button name="insertChar" data-char="&#x0301;">&#9676;&#x0301;</button>
-  <button name="insertChar" data-char="&#x0302;">&#9676;&#x0302;</button>
-  <button name="insertChar" data-char="&#x0303;">&#9676;&#x0303;</button>
-  <button name="insertChar" data-char="&#x0304;">&#9676;&#x0304;</button>
-  <button name="insertChar" data-char="&#x0306;">&#9676;&#x0306;</button>
-  <button name="insertChar" data-char="&#x0307;">&#9676;&#x0307;</button>
-  <button name="insertChar" data-char="&#x0308;">&#9676;&#x0308;</button>
-  <button name="insertChar" data-char="&#x030A;">&#9676;&#x030A;</button>
-  <button name="insertChar" data-char="&#x030B;">&#9676;&#x030B;</button>
-  <button name="insertChar" data-char="&#x030C;">&#9676;&#x030C;</button>
-  <button name="insertChar" data-char="&#x0311;">&#9676;&#x0311;</button>
-  <button name="insertChar" data-char="&#x0312;">&#9676;&#x0312;</button>
-  <button name="insertChar" data-char="&#x0313;">&#9676;&#x0313;</button>
-  <button name="insertChar" data-char="&#x0314;">&#9676;&#x0314;</button>
-  <hr />
-  <button name="insertChar" data-char="&#x0316;">&#9676;&#x0316;</button>
-  <button name="insertChar" data-char="&#x0317;">&#9676;&#x0317;</button>
-  <button name="insertChar" data-char="&#x0323;">&#9676;&#x0323;</button>
-  <button name="insertChar" data-char="&#x0324;">&#9676;&#x0324;</button>
-  <button name="insertChar" data-char="&#x0325;">&#9676;&#x0325;</button>
-  <button name="insertChar" data-char="&#x0326;">&#9676;&#x0326;</button>
-  <button name="insertChar" data-char="&#x0327;">&#9676;&#x0327;</button>
-  <button name="insertChar" data-char="&#x032C;">&#9676;&#x032C;</button>
-  <button name="insertChar" data-char="&#x032D;">&#9676;&#x032D;</button>
-  <button name="insertChar" data-char="&#x032E;">&#9676;&#x032E;</button>
-  <button name="insertChar" data-char="&#x032F;">&#9676;&#x032F;</button>
-  <button name="insertChar" data-char="&#x0330;">&#9676;&#x0330;</button>
-  <button name="insertChar" data-char="&#x0331;">&#9676;&#x0331;</button>
-  <button name="insertChar" data-char="&#x02BB;">&#9676;&#x02BB;</button>
-  <button name="insertChar" data-char="&#x02BC;">&#9676;&#x02BC;</button>
-  <button name="insertChar" data-char="&#x02BD;">&#9676;&#x02BD;</button>
-  <button name="insertChar" data-char="&#x02BE;">&#9676;&#x02BE;</button>
-  <button name="insertChar" data-char="&#x02BF;">&#9676;&#x02BF;</button>
-  <button name="insertChar" data-char="&#x02C0;">&#9676;&#x02C0;</button>
-  <button name="insertChar" data-char="&#x02C1;">&#9676;&#x02C1;</button>
+  <button name="insertChar" title="Gravis" data-char="&#x00B4;">&#9676;&#x00B4;</button>
+  <button name="insertChar" title="Acute" data-char="&#x0060;">&#9676;&#x0060;</button>
+  <button name="insertChar" title="Circumflex" data-char="&#x005E;">&#9676;&#x005E;</button>
+  <button name="insertChar" title="Tilde" data-char="&#x007E;">&#9676;&#x007E;</button>
+  <button name="insertChar" title="Macron" data-char="&#x00AF;">&#9676;&#x00AF;</button>
+  <button name="insertChar" title="Breve" data-char="&#x02D8;">&#9676;&#x02D8;</button>
+  <button name="insertChar" title="Dot" data-char="&#x002E;">&#9676;&#x002E;</button>
+  <button name="insertChar" title="Diaresis" data-char="&#x00A8;">&#9676;&#x00A8;</button>
+  <button name="insertChar" title="Ring" data-char="&#x02DA;">&#9676;&#x02DA;</button>
+  <button name="insertChar" title="Caron" data-char="&#x02C7;">&#9676;&#x02C7;</button>
+  <button name="insertChar" title="Comma" data-char="&#x002C;">&#9676;&#x002C;</button>
+  <!-- Special -->
+  <button name="insertChar" title="Turned Comma" data-char="&#x2E32;">&#9676;&#x2E32;</button>
+  <button name="insertChar" title="Reversed Comma" data-char="&#x2E41;">&#9676;&#x2E41;</button>
+  <button name="insertChar" title="rechter Halbkreis" data-char="&#x02BE;">&#9676;&#x02BE;</button>
+  <button name="insertChar" title="linker Halbkreis" data-char="&#x02BF;">&#9676;&#x02BF;</button>
+  <button name="insertChar" title="Glottal Stop" data-char="&#x02C0;">&#9676;&#x02C0;</button>
+  <button name="insertChar" title="Reversed Glottal Stop" data-char="&#x02C1;">&#9676;&#x02C1;</button>
+  <hr title="Combining Diacritics Above" />
+  <button name="insertChar" title="Grave" data-char="&#x0300;">&#9676;&#x0300;</button>
+  <button name="insertChar" title="Acute" data-char="&#x0301;">&#9676;&#x0301;</button>
+  <button name="insertChar" title="Circumflex" data-char="&#x0302;">&#9676;&#x0302;</button>
+  <button name="insertChar" title="Tilde" data-char="&#x0303;">&#9676;&#x0303;</button>
+  <button name="insertChar" title="Macron" data-char="&#x0304;">&#9676;&#x0304;</button>
+  <button name="insertChar" title="Breve" data-char="&#x0306;">&#9676;&#x0306;</button>
+  <button name="insertChar" title="Dot" data-char="&#x0307;">&#9676;&#x0307;</button>
+  <button name="insertChar" title="Diaresis" data-char="&#x0308;">&#9676;&#x0308;</button>
+  <button name="insertChar" title="Ring" data-char="&#x030A;">&#9676;&#x030A;</button>
+  <button name="insertChar" title="Caron" data-char="&#x030C;">&#9676;&#x030C;</button>
+  <button name="insertChar" title="Comma" data-char="&#x0313;">&#9676;&#x0313;</button>
+  <!-- Special -->
+  <button name="insertChar" title="Turned Breve" data-char="&#x0311;">&#9676;&#x0311;</button>
+  <button name="insertChar" title="Double Acute" data-char="&#x030B;">&#9676;&#x030B;</button>
+  <button name="insertChar" title="Double Grave" data-char="&#x030F;">&#9676;&#x030F;</button>
+  <button name="insertChar" title="Turned Comma" data-char="&#x0312;">&#9676;&#x0312;</button>
+  <button name="insertChar" title="Reversed Comma" data-char="&#x0314;">&#9676;&#x0314;</button>
+  <hr title="Combining Diacritics Below" />
+  <button name="insertChar" title="Grave" data-char="&#x0316;">&#9676;&#x0316;</button>
+  <button name="insertChar" title="Acute" data-char="&#x0317;">&#9676;&#x0317;</button>
+  <button name="insertChar" title="Circumflex" data-char="&#x032D;">&#9676;&#x032D;</button>
+  <button name="insertChar" title="Tilde" data-char="&#x0330;">&#9676;&#x0330;</button>
+  <button name="insertChar" title="Makron" data-char="&#x0331;">&#9676;&#x0331;</button>
+  <button name="insertChar" title="Breve" data-char="&#x032E;">&#9676;&#x032E;</button>
+  <button name="insertChar" title="Dot" data-char="&#x0323;">&#9676;&#x0323;</button>
+  <button name="insertChar" title="Diaresis" data-char="&#x0324;">&#9676;&#x0324;</button>
+  <button name="insertChar" title="Ring" data-char="&#x0325;">&#9676;&#x0325;</button>
+  <button name="insertChar" title="Caron" data-char="&#x032C;">&#9676;&#x032C;</button>
+  <button name="insertChar" title="Comma" data-char="&#x0326;">&#9676;&#x0326;</button>  
+  <!-- Special -->
+  <button name="insertChar" title="Turned Breve" data-char="&#x032F;">&#9676;&#x032F;</button>
+  <button name="insertChar" title="Cedilla" data-char="&#x0327;">&#9676;&#x0327;</button>
 </div>
 <textarea id="input" placeholder="input german text here"></textarea>
 <button onclick="this.parentElement.parentElement.classList.toggle('fullscreen');">Vollbild</button>
