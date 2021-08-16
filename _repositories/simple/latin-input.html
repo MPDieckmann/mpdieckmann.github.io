@@ -108,17 +108,22 @@ themecolor: "#6a8"
   hr {
     position: relative;
     margin: 1em 0;
+    overflow: visible;
   }
   
   hr::before {
     content: attr(title);
     position: absolute;
     background: #fff;
-    padding: 0 1em;
-    top: 0.5em;
-    left: auto;
-    right: auto;
-    margin: 0 auto;
+    padding: 0 0.25em;
+    top: -0.5em;
+    left: 50%;
+    line-height: 1;
+    display: block;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    transform: translate(-50%, 0);
   }
 </style>
 <div id="toolbar">
